@@ -171,9 +171,6 @@ BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-# Consumer IR
-TARGET_PROVIDES_CONSUMERIR_HAL := true
-
 # Simple time service client
 BOARD_USES_QC_TIME_SERVICES := true
 
