@@ -77,6 +77,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_2="" \
     persist.rild.nitz_short_ons_3=""
 
+#camera
+PRODUCT_PACKAGES += camera.msm8974
+
 # Power
 PRODUCT_PACKAGES += \
     power.msm8974
