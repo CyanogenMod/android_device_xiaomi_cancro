@@ -354,10 +354,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.media.use-awesome=true \
     debug.mdpcomp.4k2kSplit=1
 
-# Some binaries not eredited from commom.mk
+# Zip
 PRODUCT_PACKAGES += \
-    zip \
-    unrar
+    zip
 
 # SoundRecorder
 PRODUCT_PACKAGES += \
