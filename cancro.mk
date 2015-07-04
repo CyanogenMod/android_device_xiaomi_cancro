@@ -254,6 +254,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.qualcomm.sns.daemon=w \
     debug.qualcomm.sns.libsensor1=w
 
+#Doze Mode
+PRODUCT_PACKAGES += \
+    HammerheadDoze
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
