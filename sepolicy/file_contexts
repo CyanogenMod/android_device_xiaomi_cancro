@@ -4,4 +4,6 @@
 /sys/devices/virtual/graphics/fb0/color_enhance    u:object_r:display_sysfs:s0
 /sys/devices/virtual/graphics/fb0/sre              u:object_r:display_sysfs:s0
 /sys/devices/virtual/graphics/fb0/rgb              u:object_r:display_sysfs:s0
-/sys/class/timed_output/vibrator/amp               u:object_r:vibeamp_sysfs:s0
+
+# CMHW Vibration
+/sys/vibrator/pwmvalue                             u:object_r:vibeamp_sysfs:s0

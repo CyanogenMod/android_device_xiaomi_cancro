@@ -240,6 +240,10 @@ on boot
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/blue/blink
 
+    # Vibrator permissions
+    chown system system /sys/vibrator/pwmvalue
+    chmod 0644 /sys/vibrator/pwmvalue
+	
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 

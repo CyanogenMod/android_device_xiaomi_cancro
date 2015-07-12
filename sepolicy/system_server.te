@@ -1,5 +1,5 @@
 # display tuning
 allow system_server display_sysfs:file rw_file_perms;
 
-# for CMHardwareService access to VibratorHW
+# CMHW Vibration
 allow system_server vibeamp_sysfs:file rw_file_perms;
