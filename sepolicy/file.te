@@ -1,0 +1,2 @@
+type display_sysfs, sysfs_type, file_type;
+type vibeamp_sysfs, sysfs_type, file_type;

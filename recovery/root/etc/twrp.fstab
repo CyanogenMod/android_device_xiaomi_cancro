@@ -1,0 +1,19 @@
+### Android fstab file for TWRP ###
+
+# <mnt_point> <type>  <src>                                             <mnt_flags and options>   <fs_mgr_flags>
+/aboot        emmc    /dev/block/platform/msm_sdcc.1/by-name/aboot
+# /boot1        emmc    /dev/block/platform/msm_sdcc.1/by-name/boot1
+/boot         emmc    /dev/block/platform/msm_sdcc.1/by-name/boot
+/cache        ext4    /dev/block/platform/msm_sdcc.1/by-name/cache
+/data         ext4    /dev/block/platform/msm_sdcc.1/by-name/userdata   length=-16384
+/dbi          emmc    /dev/block/platform/msm_sdcc.1/by-name/dbi
+/misc         emmc    /dev/block/platform/msm_sdcc.1/by-name/misc
+# /modem1       emmc    /dev/block/platform/msm_sdcc.1/by-name/modem1
+/modem        emmc    /dev/block/platform/msm_sdcc.1/by-name/modem
+/recovery     emmc    /dev/block/platform/msm_sdcc.1/by-name/recovery
+/rpm          emmc    /dev/block/platform/msm_sdcc.1/by-name/rpm
+/sbl1         emmc    /dev/block/platform/msm_sdcc.1/by-name/sbl1
+# /system1      ext4    /dev/block/platform/msm_sdcc.1/by-name/system1
+/system       ext4    /dev/block/platform/msm_sdcc.1/by-name/system
+/tz           emmc    /dev/block/platform/msm_sdcc.1/by-name/tz
+/usbotg       vfat    /dev/block/platform/xhci-hcd/by-num/p1            flags=display="USB-OTG";storage;wipeingui;removable
