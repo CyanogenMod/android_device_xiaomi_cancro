@@ -1,0 +1,4 @@
+#============= location ==============
+allow location unlabeled:file { read getattr open };
+allow location unlabeled:dir search;
+allow location apk_data_file:sock_file { write read };

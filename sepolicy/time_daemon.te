@@ -1,0 +1,3 @@
+#============= time_daemon ==============
+allow time_daemon unlabeled:file { read getattr open };
+allow time_daemon unlabeled:dir search;

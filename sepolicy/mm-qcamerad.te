@@ -1,0 +1,3 @@
+#============= mm-qcamerad ==============
+allow mm-qcamerad unlabeled:file { read getattr open };
+allow mm-qcamerad unlabeled:dir search;

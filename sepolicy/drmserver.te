@@ -1,0 +1,3 @@
+#============= drmserver ==============
+allow drmserver unlabeled:file { read getattr open };
+allow drmserver unlabeled:dir search;

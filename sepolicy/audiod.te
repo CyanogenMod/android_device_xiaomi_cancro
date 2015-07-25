@@ -1,0 +1,3 @@
+#============= audiod ==============
+allow audiod unlabeled:file { read getattr open };
+allow audiod unlabeled:dir search;

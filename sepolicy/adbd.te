@@ -1,0 +1,3 @@
+#============= adbd ==============
+allow adbd unlabeled:file { read getattr open };
+allow adbd unlabeled:dir search;

@@ -1,0 +1,3 @@
+#============= sdcardd ==============
+allow sdcardd unlabeled:file { read getattr open };
+allow sdcardd unlabeled:dir search;

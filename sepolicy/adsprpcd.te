@@ -1,0 +1,3 @@
+#============= adsprpcd ==============
+allow adsprpcd unlabeled:file { read getattr open };
+allow adsprpcd unlabeled:dir search;

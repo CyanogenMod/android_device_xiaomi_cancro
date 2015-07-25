@@ -43,7 +43,7 @@ COMMON_GLOBAL_CPPFLAGS += -DNO_SECURE_DISCARD -DUSE_RIL_VERSION_10
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(CANCRO_PATH)/mkbootimg.mk
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 vmalloc=340M androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 vmalloc=340M androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 2048
@@ -187,5 +187,39 @@ include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
         $(CANCRO_PATH)/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+	adbd.te \
+	adsprpcd.te \
+	audiod.te \
+	bootanim.te \
+	charger_monitor.te \
+	debuggerd.te \
+	drmserver.te \
+	file.te \
+	file_contexts \
+	init.te \
+	keystore.te \
+	lmkd.te \
+	location.te \
+	mediaserver.te \
+	mm-qcamerad.te \
+	net.te \
+	nfc.te \
+	platform_app.te \
+	property.te \
+	property_contexts \
+	qmuxd.te \
+	rfs_access.te \
+	sdcardd.te \
+	sensors.te \
+	system_app.te \
+	system_server.te \
+	tee.te \
+	thermald.te \
+	time_daemon.te \
+	ueventd.te \
+	untrusted_app.te \
+	wcnss_service.te
 
 -include vendor/xiaomi/cancro/BoardConfigVendor.mk

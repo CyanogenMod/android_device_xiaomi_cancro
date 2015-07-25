@@ -5,5 +5,6 @@
 /sys/devices/virtual/graphics/fb0/sre              u:object_r:display_sysfs:s0
 /sys/devices/virtual/graphics/fb0/rgb              u:object_r:display_sysfs:s0
 
-# CMHW Vibration
+#============= cmhw ==============
 /sys/vibrator/pwmvalue                             u:object_r:vibeamp_sysfs:s0
+/sys/devices/gpio_keys.96/disabled_keys            u:object_r:vibeamp_sysfs:s0

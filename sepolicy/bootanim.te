@@ -1,0 +1,4 @@
+#============= bootanim ==============
+allow bootanim unlabeled:file { read open };
+allow bootanim unlabeled:dir search;
+allow bootanim mpctl_socket:dir search;

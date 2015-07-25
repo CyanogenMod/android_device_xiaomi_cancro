@@ -1,0 +1,3 @@
+#============= qmuxd ==============
+allow qmuxd unlabeled:file { read getattr open };
+allow qmuxd unlabeled:dir search;

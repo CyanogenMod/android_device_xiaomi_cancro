@@ -1,0 +1,3 @@
+#============= charger_monitor ==============
+allow charger_monitor unlabeled:file { read getattr open };
+allow charger_monitor unlabeled:dir search;

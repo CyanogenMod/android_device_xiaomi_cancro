@@ -1,0 +1,3 @@
+#============= untrusted_app ==============
+allow untrusted_app unlabeled:dir search;
+allow untrusted_app unlabeled:file { read write getattr open };
