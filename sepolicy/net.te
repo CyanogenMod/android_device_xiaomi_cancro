@@ -1,3 +1,7 @@
+#============= dhcp ==============
+allow dhcp unlabeled:dir search;
+allow dhcp unlabeled:file { read write open };
+
 #============= ims ==============
 allow ims unlabeled:file { read getattr open };
 allow ims unlabeled:dir search;
