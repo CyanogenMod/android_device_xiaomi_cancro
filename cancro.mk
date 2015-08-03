@@ -1,20 +1,27 @@
 # Common QCOM configuration tools
 $(call inherit-product, device/qcom/common/Android.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/xiaomi/cancro/overlay
-
 LOCAL_PATH := device/xiaomi/cancro
+
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp,adb \
-    camera2.portability.force_api=1
+    persist.sys.usb.config=mtp
+
+# set USB OTG enabled to add support for USB storage type
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.isUsbOtgEnabled=1
 
 # Charger
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/chargeonlymode:root/sbin/chargeonlymode
+
+# Quick charging
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.usb.hvdcp.detect=true
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -77,8 +84,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_2="" \
     persist.rild.nitz_short_ons_3=""
 
-#camera
-PRODUCT_PACKAGES += camera.msm8974
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8974
+
+# Camera api
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
 
 # Power
 PRODUCT_PACKAGES += \
@@ -111,9 +123,10 @@ PRODUCT_PACKAGES += \
     hostapd.accept \
     hostapd.deny
 
-# Adaptive Multi-Rate Wideband
+# Enable Adaptive Multi-Rate Wideband
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.enable.amr.wideband=1
+
 
 # SoftAP
 PRODUCT_PACKAGES += \
@@ -147,6 +160,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
     $(LOCAL_PATH)/nfc/nfcee_access_debug.xml:system/etc/nfcee_access.xml
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.nfc.port=I2C
+
 # Thermal config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine-8974.conf \
@@ -165,7 +181,7 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-	$(LOCAL_PATH)/audio/audio_effects.conf:system/etc/audio_effects.conf \
+    $(LOCAL_PATH)/audio/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/init.qcom.audio.sh:system/etc/init.qcom.audio.sh \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
@@ -237,20 +253,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #Enable more sensor
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.sensors.qmd=true \
-    ro.qualcomm.sensors.smd=true \
-    ro.qualcomm.sensors.cmc=true \
-    ro.qualcomm.sensors.vmd=true \
-    ro.qualcomm.sensors.gtap=true \
-    ro.qualcomm.sensors.pedometer=true \
-    ro.qualcomm.sensors.pam=true \
-    ro.qualcomm.sensors.scrn_ortn=true \
-    ro.qualcomm.sensors.georv=true \
-    ro.qualcomm.sensors.game_rv=true \
-    ro.qc.sensors.step_detector=true \
-    ro.qc.sensors.step_counter=true \
-    ro.qc.sensors.max_geomag_rotvec=true \
-    debug.qualcomm.sns.hal=w \
+    ro.qti.sensors.qmd=true \
+    ro.qti.sensors.smd=true \
+    ro.qti.sensors.cmc=true \
+    ro.qti.sensors.vmd=true \
+    ro.qti.sensors.gtap=true \
+    ro.qti.sensors.pedometer=true \
+    ro.qti.sensors.pam=true \
+    ro.qti.sensors.scrn_ortn=true \
+    ro.qti.sensors.georv=true \
+    ro.qti.sensors.game_rv=true \
+    ro.qti.sensors.step_detector=true \
+    ro.qti.sensors.step_counter=true \
+    ro.qti.sensors.max_geomag_rotv=60 \
+    persist.debug.sensors.hal=w \
     debug.qualcomm.sns.daemon=w \
     debug.qualcomm.sns.libsensor1=w
 
@@ -332,7 +348,6 @@ endif
 
 # System properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.nfc.port=I2C \
     ro.fm.transmitter=false \
     com.qc.hardware=true \
     persist.demo.hdmirotationlock=false \
@@ -351,7 +366,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
-    persist.sys.media.use-awesome=true \
     debug.mdpcomp.4k2kSplit=1
 
 # Zip
@@ -397,8 +411,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 ro.secure=0 \
 ro.adb.secure=0
 
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 ifneq ($(QCPATH),)

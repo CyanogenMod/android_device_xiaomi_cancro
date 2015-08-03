@@ -34,6 +34,7 @@ on early-init
 on property:init.svc.bootanim=running
     # Switch to DEADLINE while booting
     setprop sys.perf.profile 2
+    #write /sys/block/mmcblk0/queue/scheduler noop
     write /sys/block/mmcblk0/queue/scheduler deadline
 
 on init
@@ -144,6 +145,14 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_delack_seg
     chown system system /sys/kernel/ipv4/tcp_use_userconfig
 
+    # Copy WCNSS_qcom_cfg.ini to system/etc/firmware/wlan/prima
+    cp system/etc/wifi/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+    mkdir /system/etc/firmware
+    mkdir /system/etc/firmware/wlan
+    mkdir /system/etc/firmware/wlan/prima
+    chmod 644 system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+    chown root:root system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
@@ -245,7 +254,7 @@ on boot
     # Vibrator permissions
     chown system system /sys/vibrator/pwmvalue
     chmod 0644 /sys/vibrator/pwmvalue
-	
+
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
@@ -921,6 +930,7 @@ on property:persist.radio.ramdump_sdcard=1
 
 on property:service.bootanim.exit=1
     setprop sys.perf.profile 1
+    #start mpdecision
 
 #To enalbe fast dormancy for CU
 on property:persist.radio.modem=LTE-CU

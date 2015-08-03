@@ -11,7 +11,7 @@ persist.cne.feature=0
 
 mmp.enable.3g2=true
 mm.enable.smoothstreaming=true
-mm.enable.qcom_parser=3310129
+mm.enable.qcom_parser=37491
 
 # VIDC: debug_levels
 # 1:ERROR 2:HIGH 4:LOW 0:NOLOGS 7:AllLOGS

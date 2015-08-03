@@ -807,7 +807,7 @@
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="RX7 MIX1 INP1" value="RX1" />
         <ctl name="COMP0 Switch" value="1" />
-        <ctl name="RX7 Digital Volume" value="84" />
+        <ctl name="RX7 Digital Volume" value="80" />
         <ctl name="SPK DRV Volume" value="8" />
     </path>
 

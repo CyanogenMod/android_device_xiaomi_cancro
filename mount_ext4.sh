@@ -62,7 +62,7 @@ if [ -e ${BLOCK_DEVICE} ]; then
     fi
 fi
 
-# hide recovery partition, required by TDB
+# hide recovery partition
 RECOVERY_NODE="$(busybox readlink -f /dev/block/platform/msm_sdcc.1/by-name/recovery)"
 busybox mv "${RECOVERY_NODE}" /dev/recovery_moved
 busybox mknod -m 0600 "${RECOVERY_NODE}" b 1 3
