@@ -1,11 +1,5 @@
-#============= healthd ==============
-allow healthd unlabeled:file { read getattr open };
-allow healthd unlabeled:dir search;
-
 #============= thermal-engine ==============
 allow thermal-engine self:capability net_admin;
-allow thermal-engine unlabeled:file { read getattr open };
-allow thermal-engine unlabeled:dir search;
 allow thermal-engine self:capability net_admin;
 allow thermal-engine self:netlink_kobject_uevent_socket { read bind create setopt };
 allow thermal-engine sysfs_battery_supply:dir search;

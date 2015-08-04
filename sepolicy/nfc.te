@@ -1,3 +1,2 @@
 #============= nfc ==============
 allow nfc nfc_device:chr_file { read write ioctl };
-allow nfc unlabeled:dir search;

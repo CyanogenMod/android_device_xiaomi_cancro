@@ -1,3 +1,0 @@
-#============= lmkd ==============
-allow lmkd unlabeled:file { read getattr open };
-allow lmkd unlabeled:dir { read getattr open search };

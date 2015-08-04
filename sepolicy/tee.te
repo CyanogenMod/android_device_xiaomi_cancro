@@ -1,3 +1,0 @@
-#============= tee ==============
-allow tee unlabeled:file { read getattr open };
-allow tee unlabeled:dir search;

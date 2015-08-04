@@ -1,3 +1,0 @@
-#============= debuggerd ==============
-allow debuggerd unlabeled:file { read getattr open };
-allow debuggerd unlabeled:dir search;

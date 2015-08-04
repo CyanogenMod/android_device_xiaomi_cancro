@@ -1,3 +1,0 @@
-#============= rfs_access ==============
-allow rfs_access unlabeled:file { read getattr open };
-allow rfs_access unlabeled:dir search;

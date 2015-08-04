@@ -199,38 +199,4 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
         $(CANCRO_PATH)/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-	adbd.te \
-	adsprpcd.te \
-	audiod.te \
-	bootanim.te \
-	charger_monitor.te \
-	debuggerd.te \
-	drmserver.te \
-	file.te \
-	file_contexts \
-	init.te \
-	keystore.te \
-	lmkd.te \
-	location.te \
-	mediaserver.te \
-	mm-qcamerad.te \
-	net.te \
-	nfc.te \
-	platform_app.te \
-	property.te \
-	property_contexts \
-	qmuxd.te \
-	rfs_access.te \
-	sdcardd.te \
-	sensors.te \
-	system_app.te \
-	system_server.te \
-	tee.te \
-	thermald.te \
-	time_daemon.te \
-	ueventd.te \
-	untrusted_app.te \
-	wcnss_service.te
-
 -include vendor/xiaomi/cancro/BoardConfigVendor.mk

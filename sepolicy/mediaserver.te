@@ -1,4 +1,2 @@
 #============= mediaserver ==============
 allow mediaserver system_server:unix_stream_socket { read write };
-allow mediaserver unlabeled:file { read getattr open };
-allow mediaserver unlabeled:dir search;
