@@ -10,7 +10,7 @@
 /dev/block/platform/msm_sdcc.1/by-name/boot         /boot           emmc    defaults                                                        defaults
 /dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery       emmc    defaults                                                        defaults
 /dev/block/platform/msm_sdcc.1/by-name/misc         /misc           emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/modem        /radio          emmc    defaults                                                        defaults
+/dev/block/platform/msm_sdcc.1/by-name/modem        /radio          emmc    defaults                                                        wait
 /dev/block/platform/msm_sdcc.1/by-name/sbl1         /sbl1           emmc    defaults                                                        defaults
 /dev/block/platform/msm_sdcc.1/by-name/sbl2         /sbl2           emmc    defaults                                                        defaults
 /dev/block/platform/msm_sdcc.1/by-name/sbl3         /sbl3           emmc    defaults                                                        defaults
