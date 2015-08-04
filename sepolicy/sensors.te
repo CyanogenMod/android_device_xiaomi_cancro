@@ -1,4 +1,2 @@
 #============= sensors ==============
-allow sensors apk_data_file:dir { write remove_name add_name };
-allow sensors apk_data_file:sock_file { write create unlink setattr };
 allow sensors persist_file:file { write getattr };

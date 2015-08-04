@@ -1,12 +1,5 @@
 #============= system_server =============
-allow system_server apk_data_file:sock_file { write getattr };
 allow system_server time_daemon:unix_stream_socket connectto;
-
-#============= surfaceflinger ==============
-allow system_server apk_data_file:sock_file read;
-
-#============= sysinit ==============
-allow sysinit kernel:file read;
 
 #============= cmhw ==============
 allow system_server display_sysfs:file rw_file_perms;

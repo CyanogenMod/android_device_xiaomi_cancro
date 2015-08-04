@@ -1,0 +1,2 @@
+#============= sysinit ==============
+allow sysinit kernel:file read;
