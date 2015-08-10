@@ -145,14 +145,6 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_delack_seg
     chown system system /sys/kernel/ipv4/tcp_use_userconfig
 
-    # Copy WCNSS_qcom_cfg.ini to system/etc/firmware/wlan/prima
-    cp system/etc/wifi/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-    mkdir /system/etc/firmware
-    mkdir /system/etc/firmware/wlan
-    mkdir /system/etc/firmware/wlan/prima
-    chmod 644 system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-    chown root:root system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
