@@ -1,13 +1,6 @@
 ro.vendor.extension_library=libqti-perfd-client.so
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
-persist.radio.apm_sim_not_pwdn=0
-persist.sys.isUsbOtgEnabled=true
-
-#
-# system props for the cne module
-#
-persist.cne.feature=0
 
 mmp.enable.3g2=true
 mm.enable.smoothstreaming=true
@@ -15,10 +8,10 @@ mm.enable.qcom_parser=37491
 
 # VIDC: debug_levels
 # 1:ERROR 2:HIGH 4:LOW 0:NOLOGS 7:AllLOGS
-vidc.debug.level=1
+vidc.debug.level=4
 
 # System property for cabl
-ro.qualcomm.cabl=0
+ro.qualcomm.cabl=1
 ro.qcom.ad=1
 ro.qcom.ad.calib.data=/system/etc/calib.cfg
 

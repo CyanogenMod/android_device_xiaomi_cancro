@@ -365,6 +365,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
+    persist.sys.media.use-awesome=true \
     debug.mdpcomp.4k2kSplit=1
 
 # Zip
