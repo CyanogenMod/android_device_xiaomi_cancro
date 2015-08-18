@@ -1,5 +1,6 @@
 #============= system_server =============
 allow system_server time_daemon:unix_stream_socket connectto;
+allow system_server mediaserver:unix_stream_socket write;
 
 #============= cmhw ==============
 allow system_server display_sysfs:file rw_file_perms;
