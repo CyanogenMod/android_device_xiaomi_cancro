@@ -17,6 +17,9 @@ BOARD_VENDOR := xiaomi
 
 CANCRO_PATH := device/xiaomi/cancro
 
+# ReleaseTools
+TARGET_RELEASETOOLS_EXTENSIONS := $(CANCRO_PATH)/releasetools
+
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(CANCRO_PATH)/include
 
