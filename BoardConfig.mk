@@ -169,6 +169,10 @@ TARGET_HW_DISK_ENCRYPTION := false
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
+# Compatibility with pre-kitkat Qualcomm sensor HALs
+SENSORS_NEED_SETRATE_ON_ENABLE := true
+
+
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
