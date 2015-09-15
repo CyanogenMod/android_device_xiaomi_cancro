@@ -260,7 +260,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.speaker=true \
     audio.offload.pcm.enable=false
 
-#Enable more sensor
+# Enable more sensor
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qti.sensors.qmd=true \
     ro.qti.sensors.smd=true \
@@ -335,7 +335,7 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
-#Bluetooth
+# Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.bt.dev_power_class=1 \
     bluetooth.hfp.client=1 \
@@ -407,10 +407,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.software.print.xml:system/etc/permissions/android.software.print.xml
-
-ADDITIONAL_DEFAULT_PROPERTIES += \
-ro.secure=0 \
-ro.adb.secure=0
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
