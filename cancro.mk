@@ -160,7 +160,7 @@ PRODUCT_PACKAGES += \
     Tag
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/nfcchecker.sh:nfcchecker.sh
+    $(LOCAL_PATH)/nfc/nfcchecker.sh:/install/bin/nfcchecker.sh
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
