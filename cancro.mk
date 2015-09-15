@@ -311,7 +311,6 @@ PRODUCT_PACKAGES += \
 
 # FM Radio
 PRODUCT_PACKAGES += \
-    libqcomfm_jni \
     qcom.fmradio
 
 PRODUCT_PROPERTY_OVERRIDES += \
