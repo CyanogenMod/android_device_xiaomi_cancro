@@ -1,2 +1,0 @@
-#============= bootanim ==============
-allow bootanim mpctl_socket:dir search;
