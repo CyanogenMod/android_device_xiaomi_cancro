@@ -40,5 +40,5 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="cancro" \
     PRODUCT_NAME="cancro" \
-    BUILD_FINGERPRINT="Xiaomi/cancro/cancro:5.1.1/LMY48B/5.5.20:userdebug/test-keys" \
-    PRIVATE_BUILD_DESC="cancro-userdebug 5.1.1 LMY48B 5.5.20 test-keys"
+    BUILD_FINGERPRINT="Xiaomi/cancro/cancro:5.1.1/LMY48M/5.9.17:userdebug/test-keys" \
+    PRIVATE_BUILD_DESC="cancro-userdebug 5.1.1 LMY48M 5.9.17 test-keys"
