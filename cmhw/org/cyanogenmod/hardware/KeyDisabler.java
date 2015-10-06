@@ -26,6 +26,9 @@ import java.io.File;
  * can be fully disabled for replacement with a soft navbar. You
  * really should not be using this on a device with mechanical or
  * otherwise visible-when-inactive keys
+ *
+ * TS     = Mi3w
+ * TS_640 = Mi4
  */
 
 public class KeyDisabler {

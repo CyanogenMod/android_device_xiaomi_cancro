@@ -350,16 +350,33 @@ on post-fs-data
     # Adjust vibrator amplitude
     write /sys/class/timed_output/vibrator/amp 95
 
+    ##
     # Hardware tunables
+    #
+    # VibratorHW
     chown root system /sys/class/timed_output/vibrator/amp
     chmod 0664 /sys/class/timed_output/vibrator/amp
     restorecon /sys/class/timed_output/vibrator/amp
+    #  KeyDisabler
     chown root system /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/keys_off
     chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/keys_off
     restorecon /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/keys_off
     chown root system /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/keys_off
     chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/keys_off
     restorecon /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/keys_off
+    # HighTouchSensitivity
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/sensitive_mode
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/sensitive_mode
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/sensitive_mode
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/sensitive_mode
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/sensitive_mode
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/sensitive_mode
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/stylus
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/stylus
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/stylus
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus
 
 on charger
     wait /dev/block/platform/msm_sdcc.1/by-name/system
