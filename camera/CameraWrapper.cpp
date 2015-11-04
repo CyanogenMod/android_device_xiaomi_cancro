@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015, The CyanogenMod Project
+ * Copyright (C) 2015, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,11 +33,12 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
+static char KEY_QC_MORPHO_HDR[] = "morpho-hdr";
+
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
 static char **fixed_set_params = NULL;
-static char KEY_QC_MORPHO_HDR[] = "morpho-hdr";
 
 static int camera_device_open(const hw_module_t *module, const char *name,
         hw_device_t **device);
@@ -55,7 +56,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          .hal_api_version = HARDWARE_HAL_API_VERSION,
          .id = CAMERA_HARDWARE_MODULE_ID,
          .name = "Cancro Camera Wrapper",
-         .author = "The CyanogenMod Project",
+         .author = "The Android Open Source Project",
          .methods = &camera_module_methods,
          .dso = NULL, /* remove compilation warnings */
          .reserved = {0}, /* remove compilation warnings */
@@ -120,7 +121,8 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
 
 static char *camera_fixup_setparams(int id, const char *settings)
 {
-    bool XiaomiHDR = false;
+    bool videoMode = false;
+    bool hdrMode = false;
 
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
@@ -132,10 +134,21 @@ static char *camera_fixup_setparams(int id, const char *settings)
 
     params.set(android::CameraParameters::KEY_VIDEO_STABILIZATION, "false");
 
-    if (params.get(android::CameraParameters::KEY_SCENE_MODE)) {
-        XiaomiHDR = (!strcmp(params.get(android::CameraParameters::KEY_SCENE_MODE), "hdr"));
+    /* ZSL */
+    if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
+        videoMode = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
     }
-    if (XiaomiHDR) {
+    if (videoMode) {
+        params.set("zsl", "off");
+    } else {
+        params.set("zsl", "on");
+    }
+
+    /* HDR */
+    if (params.get(android::CameraParameters::KEY_SCENE_MODE)) {
+        hdrMode = (!strcmp(params.get(android::CameraParameters::KEY_SCENE_MODE), "hdr"));
+    }
+    if (hdrMode) {
         params.set(KEY_QC_MORPHO_HDR, "true");
         params.set(android::CameraParameters::KEY_FLASH_MODE, android::CameraParameters::FLASH_MODE_OFF);
     } else {
