@@ -33,11 +33,11 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
-static char KEY_QC_MORPHO_HDR[] = "morpho-hdr";
 
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
+static char KEY_QC_MORPHO_HDR[] = "morpho-hdr";
 static char **fixed_set_params = NULL;
 
 static int camera_device_open(const hw_module_t *module, const char *name,
@@ -138,11 +138,6 @@ static char *camera_fixup_setparams(int id, const char *settings)
     if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
         videoMode = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
     }
-    if (videoMode) {
-        params.set("zsl", "off");
-    } else {
-        params.set("zsl", "on");
-    }
 
     /* HDR */
     if (params.get(android::CameraParameters::KEY_SCENE_MODE)) {
@@ -151,9 +146,17 @@ static char *camera_fixup_setparams(int id, const char *settings)
     if (hdrMode) {
         params.set(KEY_QC_MORPHO_HDR, "true");
         params.set(android::CameraParameters::KEY_FLASH_MODE, android::CameraParameters::FLASH_MODE_OFF);
+        // enable ZSL only when HDR is on, otherwise some camera apps will break
+        params.set("zsl", "on");
     } else {
         params.set(KEY_QC_MORPHO_HDR, "false");
+        params.set("zsl", "off");
     }
+
+    // force ZSL off for videos
+    if (videoMode)
+        params.set("zsl", "off");
+
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
