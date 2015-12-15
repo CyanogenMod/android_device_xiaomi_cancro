@@ -99,6 +99,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.perf.cores_online=1
 
+# Art
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-swap=false
+
 # WiFi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
@@ -140,7 +144,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
-    wlan.driver.ath=0 \
     ro.use_data_netmgrd=true \
     persist.data.netmgrd.qos.enable=true \
     persist.data.tcpackprio.enable=true \
@@ -149,6 +152,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # IPC router config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
+
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -260,7 +264,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qti.sensors.max_geomag_rotv=60 \
     persist.debug.sensors.hal=w \
     debug.qualcomm.sns.daemon=w \
-    debug.qualcomm.sns.libsensor1=w
+	debug.qualcomm.sns.libsensor1=w
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -321,32 +325,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.alwaysbleon=true \
     qcom.bt.dev_power_class=1
 
-ifneq ($(QCPATH),)
-# proprietary wifi display, if available
-PRODUCT_BOOT_JARS += WfdCommon
-endif
-
 # System properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.fm.transmitter=false \
-    com.qc.hardware=true \
+    persist.debug.wfd.enable=1 \
     persist.demo.hdmirotationlock=false \
     ro.hdmi.enable=true \
-    debug.sf.hw=1 \
-    debug.egl.hw=1 \
-    persist.hwc.mdpcomp.enable=true \
-    debug.mdpcomp.logs=0 \
-    debug.composition.type=dyn \
-    ro.sf.lcd_density=480 \
-    dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=196608 \
-    ril.subscription.types=NV,RUIM \
-    persist.omh.enabled=true \
-    persist.sys.ssr.restart_level=3 \
+    ro.sf.lcd_density=480 \
+    persist.hwc.mdpcomp.enable=true \
     persist.timed.enable=true \
-    persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0 \
-    debug.mdpcomp.4k2kSplit=1
+    persist.sys.wfd.virtual=0
 
 # Zip
 PRODUCT_PACKAGES += \
@@ -387,7 +375,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.print.xml:system/etc/permissions/android.software.print.xml
 
 # Screen density
-PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 ifneq ($(QCPATH),)
