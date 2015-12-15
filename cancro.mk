@@ -195,6 +195,15 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdb/MTP/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
     $(LOCAL_PATH)/audio/acdb/MTP/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.audio.ssr=false \
+    ro.qc.sdk.audio.fluencetype=fluence \
+    audio.offload.video=false \
+    use.voice.path.for.pcm.voip=true \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=true \
+    persist.audio.fluence.speaker=false
+
 # Media profile
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
@@ -233,25 +242,6 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     tinymix
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.speaker.prot.enable=true \
-    qcom.hw.aac.encoder=false \
-    tunnel.audio.encode=false \
-    persist.audio.init_volume_index=1 \
-    audio.offload.buffer.size.kb=32 \
-    av.offload.enable=true \
-    audio.offload.gapless.enabled=false \
-    audio.offload.disable=1 \
-    use.dedicated.device.for.voip=false \
-    use.voice.path.for.pcm.voip=true \
-    media.aac_51_output_enabled=true \
-    ro.qc.sdk.audio.ssr=false \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=true \
-    audio.offload.pcm.enable=false
 
 # Enable more sensor
 PRODUCT_PROPERTY_OVERRIDES += \

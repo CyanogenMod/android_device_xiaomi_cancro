@@ -117,4 +117,3 @@ esac
 
 setprop qcom.audio.init complete
 exit 0
-
