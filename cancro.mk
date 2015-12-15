@@ -7,14 +7,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# USB
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
-# set USB OTG enabled to add support for USB storage type
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.isUsbOtgEnabled=1
-
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
@@ -151,7 +143,7 @@ PRODUCT_PACKAGES += \
     Tag
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/nfc/nfcchecker.sh:/install/bin/nfcchecker.sh
+    $(LOCAL_PATH)/nfc/nfcchecker.sh:install/bin/nfcchecker.sh
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
@@ -159,9 +151,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
     $(LOCAL_PATH)/nfc/nfcee_access_debug.xml:system/etc/nfcee_access.xml
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.nfc.port=I2C
 
 # Thermal config
 PRODUCT_COPY_FILES += \
@@ -239,22 +228,22 @@ PRODUCT_PACKAGES += \
 
 # Enable more sensor
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qti.sensors.qmd=true \
-    ro.qti.sensors.smd=true \
-    ro.qti.sensors.cmc=true \
-    ro.qti.sensors.vmd=true \
-    ro.qti.sensors.gtap=true \
-    ro.qti.sensors.pedometer=true \
-    ro.qti.sensors.pam=true \
-    ro.qti.sensors.scrn_ortn=true \
-    ro.qti.sensors.georv=true \
-    ro.qti.sensors.game_rv=true \
-    ro.qti.sensors.step_detector=true \
-    ro.qti.sensors.step_counter=true \
-    ro.qti.sensors.max_geomag_rotv=60 \
-    persist.debug.sensors.hal=w \
+    ro.qualcomm.sensors.qmd=true \
+    ro.qualcomm.sensors.smd=true \
+    ro.qualcomm.sensors.cmc=true \
+    ro.qualcomm.sensors.vmd=true \
+    ro.qualcomm.sensors.gtap=true \
+    ro.qualcomm.sensors.pedometer=true \
+    ro.qualcomm.sensors.pam=true \
+    ro.qualcomm.sensors.scrn_ortn=true \
+    ro.qualcomm.sensors.georv=true \
+    ro.qualcomm.sensors.game_rv=true \
+    ro.qc.sensors.step_detector=true \
+    ro.qc.sensors.step_counter=true \
+    ro.qc.sensors.max_geomag_rotvec=true \
+    debug.qualcomm.sns.hal=w \
     debug.qualcomm.sns.daemon=w \
-	debug.qualcomm.sns.libsensor1=w
+    debug.qualcomm.sns.libsensor1=w
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -279,12 +268,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=0
 
+# Wifi
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.cne.feature=0
+
 # Radio
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl \
     rmnetcli
-
 
 # Keystore
 PRODUCT_PACKAGES += \

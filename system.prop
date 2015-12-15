@@ -8,7 +8,7 @@ mm.enable.qcom_parser=37491
 
 # VIDC: debug_levels
 # 1:ERROR 2:HIGH 4:LOW 0:NOLOGS 7:AllLOGS
-vidc.debug.level=4
+vidc.debug.level=1
 
 # System property for cabl
 ro.qualcomm.cabl=1
