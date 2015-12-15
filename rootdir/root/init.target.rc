@@ -31,19 +31,6 @@ on early-init
     mkdir /firmware 0771 system system
     symlink /data/tombstones /tombstones
 
-on init
-    # Set the property to indicate type of virtual display to 0
-    # 0 indicates that virtual display is not a Wifi display and that the
-    # session is not exercised through RemoteDisplay in the android framework
-    setprop persist.sys.wfd.virtual 0
-    # Immersion
-    export VIBE_PIPE_PATH /dev/pipes
-    mkdir /dev/pipes 0771 system system
-
-# import cne init file
-#on post-fs
-#    export LD_PRELOAD /vendor/lib/libNimsWrap.so
-
 on fs
     mount_all fstab.qcom
 
@@ -79,8 +66,8 @@ on post-fs-data
     chmod 0660 /dev/sysmatdrv
 
     # Torch
-    chown system camera /sys/class/leds/flashlight/brightness
-    chmod 0660 /sys/class/leds/flashlight/brightness
+    chown system camera /sys/class/leds/torch-light/brightness
+    chmod 0660 /sys/class/leds/torch-light/brightness
 
 on boot
     chown system system /sys/class/input/input0/enabled
@@ -184,11 +171,6 @@ service thermal-engine /system/bin/thermal-engine
    socket thermal-recv-passive-client stream 0666 system system
    group root
    disabled
-
-service thermal-perf /system/bin/thermal-engine --config /system/etc/thermal-engine-perf.conf
-   class main
-   user root
-   group radio system
 
 service time_daemon /system/bin/time_daemon
    class late_start

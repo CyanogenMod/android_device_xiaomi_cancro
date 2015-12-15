@@ -162,10 +162,14 @@ case "$1" in
         ;;
 esac
 
-# Setup HDMI related nodes & permissions
-# HDMI can be fb1 or fb2
-# Loop through the sysfs nodes and determine
-# the HDMI(dtv panel)
+#Setup display nodes & permissions
+
+function set_perms() {
+    #Usage set_perms <filename> <ownership> <permission>
+    chown -h $2 $1
+    chmod $3 $1
+}
+
 for fb_cnt in 0 1 2
 do
 file=/sys/class/graphics/fb$fb_cnt
@@ -175,20 +179,28 @@ dev_file=/dev/graphics/fb$fb_cnt
     value=`cat $file/msm_fb_type`
     case "$value" in
             "dtv panel")
-        chown -h system.graphics $file/hpd
-        chown -h system.system $file/hdcp/tp
-        chown -h system.graphics $file/vendor_name
-        chown -h system.graphics $file/product_description
-        chmod -h 0664 $file/hpd
-        chmod -h 0664 $file/hdcp/tp
-        chmod -h 0664 $file/vendor_name
-        chmod -h 0664 $file/product_description
-        chmod -h 0664 $file/video_mode
-        chmod -h 0664 $file/format_3d
-        # create symbolic link
+        set_perms $file/hpd system.graphics 0664
+        set_perms $file/res_info system.graphics 0664
+        set_perms $file/vendor_name system.graphics 0664
+        set_perms $file/product_description system.graphics 0664
+        set_perms $file/video_mode system.graphics 0664
+        set_perms $file/format_3d system.graphics 0664
+        set_perms $file/s3d_mode system.graphics 0664
+        set_perms $file/cec/enable system.graphics 0664
+        set_perms $file/cec/logical_addr system.graphics 0664
+        set_perms $file/cec/rd_msg system.graphics 0664
+        set_perms $file/pa system.graphics 0664
+        set_perms $file/cec/wr_msg system.graphics 0600
+        set_perms $file/hdcp/tp system.graphics 0664
         ln -s $dev_file /dev/graphics/hdmi
-        # Change owner and group for media server and surface flinger
-        chown -h system.system $file/format_3d;;
     esac
+    if [ $fb_cnt -eq 0 ]
+    then
+        set_perms $file/idle_time system.graphics 0664
+        set_perms $file/dynamic_fps system.graphics 0664
+        set_perms $file/dyn_pu system.graphics 0664
+        set_perms $file/modes system.graphics 0664
+        set_perms $file/mode system.graphics 0664
+    fi
   fi
 done

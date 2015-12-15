@@ -86,6 +86,8 @@ case "$target" in
                 echo 1 > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
                 echo "85 1500000:90 1800000:70" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
                 echo 40000 > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+                echo 20 > /sys/module/cpu_boost/parameters/boost_ms
+                echo 1728000 > /sys/module/cpu_boost/parameters/sync_threshold
                 echo 100000 > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
                 echo 40 > /sys/module/cpu_boost/parameters/input_boost_ms
                 setprop ro.qualcomm.perf.cores_online 1
@@ -151,6 +153,7 @@ case "$target" in
         chown system.system /sys/module/cpu_boost/parameters/sync_threshold
         chown system.system /sys/module/cpu_boost/parameters/input_boost_freq
         chown system.system /sys/module/cpu_boost/parameters/input_boost_ms
+        echo 1 > /dev/cpuctl/apps/cpu.notify_on_migrate
         #start mpdecision
         setprop sys.perf.profile `getprop sys.perf.profile`
     ;;
