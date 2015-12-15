@@ -1,0 +1,15 @@
+#============= qti_init_shell ==============
+allow qti_init_shell ctl_default_prop:property_service set;
+allow qti_init_shell persist_file:dir setattr;
+allow qti_init_shell sensors_data_file:dir setattr;
+allow qti_init_shell sensors_data_file:file { write getattr setattr };
+allow qti_init_shell sysfs_battery_supply:dir search;
+allow qti_init_shell sysfs_battery_supply:file { getattr setattr };
+allow qti_init_shell sysfs_devices_system_cpu:file setattr;
+allow qti_init_shell sensors_data_file:dir write;
+allow qti_init_shell sensors_data_file:dir add_name;
+allow qti_init_shell sensors_data_file:file create;
+allow qti_init_shell sensors_data_file:file { read open };
+allow qti_init_shell apk_data_file:dir rw_dir_perms;
+allow qti_init_shell apk_data_file:file create_file_perms;
+allow qti_init_shell btnvtool_exec:file { read open getattr execute };

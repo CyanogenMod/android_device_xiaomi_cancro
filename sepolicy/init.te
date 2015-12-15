@@ -1,2 +1,9 @@
 #============= init ==============
+allow init location_data_file:fifo_file write;
+allow init qmuxd:unix_stream_socket connectto;
+allow init qmuxd_socket:sock_file write;
+allow init self:socket { write read create ioctl };
+allow init sensors:unix_stream_socket connectto;
+allow init sensors_device:chr_file getattr;
+allow init sensors_socket:sock_file write;
 allow init firmware_file:dir mounton;
