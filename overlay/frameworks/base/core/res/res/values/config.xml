@@ -29,7 +29,6 @@
     <bool name="config_dreamsEnabledByDefault">false</bool>
     <bool name="config_dreamsActivatedOnDockByDefault">true</bool>
     <bool name="config_useDevInputEventForAudioJack">true</bool>
-    <bool name="config_radio_reset_on_regular_deactivation">false</bool>
     <bool name="config_hotswapCapable">true</bool>
     <bool translatable="false" name="skip_restoring_network_selection">true</bool>
     <bool name="config_cellBroadcastAppLinks">true</bool>
@@ -37,12 +36,6 @@
     <!-- The duration (in milliseconds) that the radio will scan for a signal
     when there's no network connection. If the scan doesn't timeout, use zero -->
     <integer name="config_radioScanningTimeout">9000</integer>
-
-    <bool name="config_enable_mms_with_mobile_data_off">true</bool>
-
-    <!-- Boolean indicating if RADIO POWER OFF should be skipped on receiving SIM REFRESH with RESET-->
-    <!-- This will be handled by modem if it is true-->
-    <bool translatable="false" name="skip_radio_power_off_on_sim_refresh_reset">true</bool>
 
     <!-- Configure mobile tcp buffer sizes in the form:
          rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
@@ -199,9 +192,6 @@
         <item>"ethernet,9,9,9,-1,true"</item>
     </string-array>
 
-    <!-- bool value to for enabling motion accelerometer -->
-    <bool name="use_motion_accel">false</bool>
-
     <!-- Enable overlay for all location components. -->
     <!--bool name="config_enableNetworkLocationOverlay" translatable="false">false</bool>
     <string name="config_networkLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
@@ -306,13 +296,6 @@
          The default is false. -->
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
-    <string name="config_perf_profile_prop">sys.perf.profile</string>
-    <string name="config_perf_profile_default_entry">1</string>
-
-    <!-- Is the device LTE capable -->
-    <bool name="config_lte_capable">false</bool>
-
-    <!-- Flag specifying whether VoLTE & VT is availasble on device -->
-    <bool name="config_device_volte_available">false</bool>
-
+    <!-- enable doze powersaving mode -->
+    <bool name="config_enableAutoPowerModes">true</bool>
 </resources>
