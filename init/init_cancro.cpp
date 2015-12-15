@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2013, The Linux Foundation. All rights reserved.
+   Copyright (c) 2015, The Linux Foundation. All rights reserved.
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -35,13 +35,38 @@
 #include "property_service.h"
 #include "log.h"
 #include "util.h"
-#include "utils.h"
 
 #include "init_msm.h"
 
+#define RAW_ID_PATH     "/sys/devices/system/soc/soc0/raw_id"
+#define BUF_SIZE         64
+static char tmp[BUF_SIZE];
+
+static int read_file2(const char *fname, char *data, int max_size)
+{
+    int fd, rc;
+
+    if (max_size < 1)
+        return 0;
+
+    fd = open(fname, O_RDONLY);
+    if (fd < 0) {
+        ERROR("failed to open '%s'\n", fname);
+        return 0;
+    }
+
+    rc = read(fd, data, max_size - 1);
+    if ((rc > 0) && (rc < max_size))
+        data[rc] = '\0';
+    else
+        data[0] = '\0';
+    close(fd);
+
+    return 1;
+}
+
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
-    char platform[PROP_VALUE_MAX];
     int rc;
     unsigned long raw_id = -1;
 
@@ -49,37 +74,24 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     UNUSED(msm_ver);
     UNUSED(board_type);
 
-    rc = property_get("ro.board.platform", platform);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
-        return;
-
-    char resultvalue[PROP_VALUE_MAX];
-    char *propkey = "oi,hj*srjnjqp";
-    char *resultpropkey = malloc(50);
-    memset(resultpropkey, 0, 50);
-    toOrigin(propkey, resultpropkey);
-    property_get(resultpropkey, resultvalue);
-    char *valuestr = "_\\q)lbukt,^ni";
-    char *resultvaluestr = malloc(50);
-    memset(resultvaluestr, 0, 50);
-    toOrigin(valuestr, resultvaluestr);
-    if (strstr(resultvalue, resultvaluestr) == NULL) {
-        free(resultpropkey);
-        free(resultvaluestr);
-        reboot();
+    /* get raw ID */
+    rc = read_file2(RAW_ID_PATH, tmp, sizeof(tmp));
+    if (rc) {
+        raw_id = strtoul(tmp, NULL, 0);
     }
 
-    char resultvalue1[PROP_VALUE_MAX];
-    char *propkey1 = "oi,]nkt+buqdnsfil";
-    char *resultpropkeya = malloc(50);
-    memset(resultpropkeya, 0, 50);
-    toOrigin(propkey1, resultpropkeya);
-    property_get(resultpropkeya, resultvalue1);
-    if(strncmp(resultvalue1, "3", 1) == 0 && strlen(resultvalue1) == 2) {
-        property_set("ro.product.model", "MI 3W");
-    } else if (strncmp(resultvalue1, "4", 1) == 0 && strlen(resultvalue1) == 2) {
-        property_set("ro.product.model", "MI 4");
+    switch (raw_id) {
+        case 1978:
+            property_set("ro.product.model", "MI 3W");
+            break;
+        case 1974:
+            property_set("ro.product.model", "MI 4W");
+            property_set("ro.telephony.default_network", "10");
+            property_set("ro.ril.def.preferred.network", "10");
+            break;
+        default:
+            // Other unsupported variants
+            property_set("ro.product.model", "Unsupported MI Cancro");
+            break;
     }
-    property_set("ro.build.product", "cancro");
-    property_set("ro.product.device", "cancro");
 }
