@@ -232,12 +232,17 @@ on boot
     chown system system /sys/devices/system/cpu/nrcpus
     chmod 0664 /sys/devices/system/cpu/nrcpus
 
+    # Enable writing to led blink node from userspace
     chown system system /sys/class/leds/button-backlight/brightness
-    chown system system /sys/class/leds/button-backlight/max_brightness
     chown system system /sys/class/leds/button-backlight1/brightness
-    chown system system /sys/class/leds/button-backlight1/max_brightness
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/red/ramp_step_ms
     chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/duty_pcts
+    chown system system /sys/class/leds/green/ramp_step_ms
     chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/blue/duty_pcts
+    chown system system /sys/class/leds/blue/ramp_step_ms
     chown system system /sys/class/leds/blue/blink
 
     # Vibrator permissions

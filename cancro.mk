@@ -85,6 +85,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8974
+
 # Power
 PRODUCT_PACKAGES += \
     power.msm8974
