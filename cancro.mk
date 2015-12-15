@@ -86,7 +86,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8974
+    libxml2
 
 # Camera api
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -289,9 +289,6 @@ PRODUCT_PACKAGES += \
     e2fsck_static \
     mke2fs_static \
     resize2fs_static
-
-PRODUCT_PACKAGES += \
-    libxml2
 
 # Graphics
 PRODUCT_PACKAGES += \
