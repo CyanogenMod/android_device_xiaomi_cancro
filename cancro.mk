@@ -16,8 +16,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.isUsbOtgEnabled=1
 
 # Charger
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/root/chargeonlymode:root/sbin/chargeonlymode
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 # Quick charging
 PRODUCT_PROPERTY_OVERRIDES += \
