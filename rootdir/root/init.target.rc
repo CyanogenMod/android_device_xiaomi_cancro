@@ -159,18 +159,16 @@ service qseecomd /system/bin/qseecomd
    group root
 
 service mpdecision /system/bin/mpdecision --avg_comp
-   class main
-   user root
-   group system
-   disabled
+    class main
+    user root
+    group system
+    disabled
 
-service thermal-engine /system/bin/thermal-engine
-   user root
-   socket thermal-send-client stream 0666 system system
-   socket thermal-recv-client stream 0660 system system
-   socket thermal-recv-passive-client stream 0666 system system
-   group root
-   disabled
+service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+    seclabel u:r:thermanager:s0
+    class late_start
+    user root
+    group root
 
 service time_daemon /system/bin/time_daemon
    class late_start
@@ -271,18 +269,15 @@ service changepowermode /system/bin/changepowermode.sh
 
 on property:sys.perf.profile=2
     start changepowermode
-    stop thermal-engine
-    start thermal-perf
+    stop thermanager
 
 on property:sys.perf.profile=1
     start changepowermode
-    stop thermal-perf
-    start thermal-engine
+    start thermanager
 
 on property:sys.perf.profile=0
     start changepowermode
-    stop thermal-perf
-    start thermal-engine
+    start thermanager
 
 on property:persist.sys.display_prefer=0
     write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x2

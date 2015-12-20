@@ -1,0 +1,300 @@
+<thermanager>
+	<resources>
+		<!-- thermal zones -->
+		<resource name="tsens_tz_sensor0" type="tz">/sys/class/thermal/thermal_zone0</resource>
+		<resource name="tsens_tz_sensor1" type="tz">/sys/class/thermal/thermal_zone1</resource>
+		<resource name="tsens_tz_sensor2" type="tz">/sys/class/thermal/thermal_zone2</resource>
+		<resource name="tsens_tz_sensor3" type="tz">/sys/class/thermal/thermal_zone3</resource>
+		<resource name="tsens_tz_sensor4" type="tz">/sys/class/thermal/thermal_zone4</resource>
+
+		<resource name="tsens_tz_sensor5" type="tz">/sys/class/thermal/thermal_zone5</resource> <!-- cpu0 -->
+		<resource name="tsens_tz_sensor6" type="tz">/sys/class/thermal/thermal_zone6</resource> <!-- cpu1 -->
+		<resource name="tsens_tz_sensor7" type="tz">/sys/class/thermal/thermal_zone7</resource> <!-- cpu2 -->
+		<resource name="tsens_tz_sensor8" type="tz">/sys/class/thermal/thermal_zone8</resource> <!-- cpu3 -->
+		<resource name="tsens_tz_sensor9" type="tz">/sys/class/thermal/thermal_zone9</resource> <!-- gpu0 -->
+		<resource name="tsens_tz_sensor10" type="tz">/sys/class/thermal/thermal_zone10</resource> <!-- gpu1 -->
+
+		<resource name="pm8941_tz" type="tz">/sys/class/thermal/thermal_zone12</resource>
+		<resource name="pa_therm0" type="tz">/sys/class/thermal/thermal_zone13</resource>
+
+		<resource name="temp-krait-400" type="union">
+			<resource name="tsens_tz_sensor5" />
+			<resource name="tsens_tz_sensor6" />
+			<resource name="tsens_tz_sensor7" />
+			<resource name="tsens_tz_sensor8" />
+		</resource>
+
+		<resource name="temp-adreno-330" type="union">
+			<resource name="tsens_tz_sensor9" />
+			<resource name="tsens_tz_sensor10" />
+		</resource>
+
+		<!-- generic cpufreq -->
+		<resource name="cpu0" type="sysfs">/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq</resource>
+		<resource name="cpu1" type="sysfs">/sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq</resource>
+		<resource name="cpu2" type="sysfs">/sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq</resource>
+		<resource name="cpu3" type="sysfs">/sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq</resource>
+
+		<resource name="krait-400" type="union">
+			<resource name="cpu0" />
+			<resource name="cpu1" />
+			<resource name="cpu2" />
+			<resource name="cpu3" />
+		</resource>
+
+		<!-- device-specific -->
+		<resource name="backlight" type="sysfs">/sys/class/leds/lcd-backlight/max_brightness</resource>
+
+		<resource name="kgsl-3d0" type="sysfs">/sys/class/kgsl/kgsl-3d0/max_gpuclk</resource>
+		<resource name="usb" type="sysfs">/sys/class/power_supply/usb/current_max</resource>
+		<resource name="battery_temp" type="sysfs">/sys/class/power_supply/battery/temp</resource>
+		<resource name="charging_enabled" type="sysfs">/sys/class/power_supply/battery/charging_enabled</resource>
+
+		<!-- TODO: -->
+		<resource name="camera" type="echo" />
+		<resource name="modem" type="echo" />
+
+		<resource name="shutdown" type="halt" delay="5" />
+	</resources>
+
+	<control name="usb">
+		<mitigation level="off"><value resource="usb">1500000</value></mitigation>
+		<mitigation level="1"><value resource="usb">900000</value></mitigation>
+		<mitigation level="2"><value resource="usb">700000</value></mitigation>
+		<mitigation level="3"><value resource="usb">500000</value></mitigation>
+		<mitigation level="4"><value resource="usb">300000</value></mitigation>
+		<mitigation level="5"><value resource="usb">150000</value></mitigation>
+	</control>
+
+	<control name="battery_protect">
+		<mitigation level="off"><value resource="charging_enabled">1</value></mitigation>
+		<mitigation level="1"><value resource="charging_enabled">0</value></mitigation>
+		<mitigation level="2"><value resource="shutdown" /></mitigation>
+	</control>
+
+	<control name="modem">
+		<mitigation level="off"><value resource="modem">0</value></mitigation>
+		<mitigation level="1"><value resource="modem">1</value></mitigation>
+	</control>
+
+	<control name="camera">
+		<mitigation level="off"><value resource="camera">NORMAL</value></mitigation>
+		<mitigation level="1"><value resource="camera">WARNING</value></mitigation>
+		<mitigation level="2"><value resource="camera">CRITICAL</value></mitigation>
+	</control>
+
+	<control name="shutdown">
+		<mitigation level="off" />
+		<mitigation level="1"><value resource="shutdown"/></mitigation>
+	</control>
+
+	<control name="backlight">
+		<mitigation level="off"><value resource="backlight">255</value></mitigation>
+		<mitigation level="1"><value resource="backlight">209</value></mitigation>
+		<mitigation level="2"><value resource="backlight">171</value></mitigation>
+		<mitigation level="3"><value resource="backlight">141</value></mitigation>
+		<mitigation level="4"><value resource="backlight">115</value></mitigation>
+		<mitigation level="5"><value resource="backlight">95</value></mitigation>
+		<mitigation level="6"><value resource="backlight">78</value></mitigation>
+		<mitigation level="7"><value resource="backlight">64</value></mitigation>
+		<mitigation level="8"><value resource="backlight">52</value></mitigation>
+		<mitigation level="9"><value resource="backlight">43</value></mitigation>
+	</control>
+
+	<control name="gpu">
+		<mitigation level="off"><value resource="kgsl-3d0">578000000</value></mitigation>
+		<mitigation level="1"><value resource="kgsl-3d0">462400000</value></mitigation>
+		<mitigation level="2"><value resource="kgsl-3d0">389000000</value></mitigation>
+		<mitigation level="3"><value resource="kgsl-3d0">330000000</value></mitigation>
+		<mitigation level="4"><value resource="kgsl-3d0">200000000</value></mitigation>
+		<mitigation level="5"><value resource="shutdown" /></mitigation>
+	</control>
+
+	<control name="cpu">
+		<mitigation level="off"><value resource="krait-400">2457600</value></mitigation>
+		<mitigation level="1"><value resource="krait-400">2265600</value></mitigation>
+		<mitigation level="2"><value resource="krait-400">1958400</value></mitigation>
+		<mitigation level="3"><value resource="krait-400">1728000</value></mitigation>
+		<mitigation level="4"><value resource="krait-400">1574400</value></mitigation>
+		<mitigation level="5"><value resource="krait-400">1497600</value></mitigation>
+		<mitigation level="6"><value resource="krait-400">1267200</value></mitigation>
+		<mitigation level="7"><value resource="krait-400">1190400</value></mitigation>
+		<mitigation level="8"><value resource="krait-400">1036800</value></mitigation>
+		<mitigation level="9"><value resource="krait-400">960000</value></mitigation>
+		<mitigation level="10"><value resource="krait-400">883200</value></mitigation>
+		<mitigation level="11"><value resource="krait-400">729600</value></mitigation>
+		<mitigation level="12"><value resource="krait-400">652800</value></mitigation>
+		<mitigation level="13"><value resource="krait-400">422400</value></mitigation>
+		<mitigation level="14"><value resource="krait-400">300000</value></mitigation>
+		<mitigation level="15"><value resource="shutdown" /></mitigation>
+	</control>
+
+	<!-- burn-out protection -->
+	<configuration sensor="pa_therm0">
+		<threshold>
+			<mitigation name="shutdown" level="off" />
+		</threshold>
+		<threshold trigger="82" clear="70">
+			<mitigation name="shutdown" level="1" />
+		</threshold>
+	</configuration>
+
+	<!-- USB -->
+	<configuration sensor="pm8941_tz">
+		<threshold>
+			<mitigation name="usb" level="off" />
+		</threshold>
+		<threshold trigger="62000" clear="60500">
+			<mitigation name="usb" level="1" />
+		</threshold>
+		<threshold trigger="62500" clear="61500">
+			<mitigation name="usb" level="2" />
+		</threshold>
+		<threshold trigger="63000" clear="62000">
+			<mitigation name="usb" level="3" />
+		</threshold>
+		<threshold trigger="64500" clear="63500">
+			<mitigation name="usb" level="4" />
+		</threshold>
+		<threshold trigger="66000" clear="64500">
+			<mitigation name="usb" level="5" />
+		</threshold>
+	</configuration>
+
+	<!-- charging -->
+	<configuration sensor="battery_temp">
+		<threshold>
+			<mitigation name="battery_protect" level="off" />
+		</threshold>
+		<threshold trigger="700" clear="600">
+			<mitigation name="battery_protect" level="1" />
+		</threshold>
+		<threshold trigger="825" clear="700">
+			<mitigation name="battery_protect" level="2" />
+		</threshold>
+	</configuration>
+
+	<!-- GPU -->
+	<configuration sensor="pm8941_tz">
+		<threshold>
+			<mitigation name="gpu" level="off" />
+		</threshold>
+		<threshold trigger="64000" clear="63000">
+			<mitigation name="gpu" level="1" />
+		</threshold>
+		<threshold trigger="64500" clear="63500">
+			<mitigation name="gpu" level="2" />
+		</threshold>
+		<threshold trigger="65000" clear="64000">
+			<mitigation name="gpu" level="3" />
+		</threshold>
+		<threshold trigger="66000" clear="64500">
+			<mitigation name="gpu" level="4" />
+		</threshold>
+	</configuration>
+
+	<configuration sensor="temp-adreno-330">
+		<threshold>
+			<mitigation name="gpu" level="off" />
+		</threshold>
+		<threshold trigger="100" clear="95">
+			<mitigation name="gpu" level="4" />
+		</threshold>
+		<threshold trigger="120" clear="110">
+			<mitigation name="gpu" level="5" />
+		</threshold>
+	</configuration>
+
+	<!-- modem -->
+	<configuration sensor="pm8941_tz">
+		<threshold>
+			<mitigation name="modem" level="off" />
+		</threshold>
+		<threshold trigger="64000" clear="63000">
+			<mitigation name="modem" level="1" />
+		</threshold>
+	</configuration>
+
+	<!-- backlight -->
+	<configuration sensor="pm8941_tz">
+		<threshold>
+			<mitigation name="backlight" level="off" />
+		</threshold>
+		<threshold trigger="61000" clear="60000">
+			<mitigation name="backlight" level="1" />
+		</threshold>
+		<threshold trigger="62000" clear="60500">
+			<mitigation name="backlight" level="2" />
+		</threshold>
+		<threshold trigger="62500" clear="61500">
+			<mitigation name="backlight" level="3" />
+		</threshold>
+		<threshold trigger="63000" clear="62000">
+			<mitigation name="backlight" level="4" />
+		</threshold>
+		<threshold trigger="63500" clear="62500">
+			<mitigation name="backlight" level="5" />
+		</threshold>
+		<threshold trigger="64000" clear="63000">
+			<mitigation name="backlight" level="6" />
+		</threshold>
+		<threshold trigger="64500" clear="63500">
+			<mitigation name="backlight" level="7" />
+		</threshold>
+		<threshold trigger="65000" clear="64000">
+			<mitigation name="backlight" level="8" />
+		</threshold>
+		<threshold trigger="66000" clear="64500">
+			<mitigation name="backlight" level="9" />
+		</threshold>
+	</configuration>
+
+	<!-- CPU -->
+	<configuration sensor="pm8941_tz">
+		<threshold>
+			<mitigation name="cpu" level="off" />
+		</threshold>
+		<threshold trigger="63500" clear="62500">
+			<mitigation name="cpu" level="3" />
+		</threshold>
+		<threshold trigger="64000" clear="63000">
+			<mitigation name="cpu" level="6" />
+		</threshold>
+		<threshold trigger="64500" clear="63500">
+			<mitigation name="cpu" level="8" />
+		</threshold>
+		<threshold trigger="65000" clear="64000">
+			<mitigation name="cpu" level="10" />
+		</threshold>
+		<threshold trigger="66000" clear="64500">
+			<mitigation name="cpu" level="11" />
+		</threshold>
+		<threshold trigger="69000" clear="65500">
+			<mitigation name="cpu" level="12" />
+		</threshold>
+		<threshold trigger="75000" clear="67500">
+			<mitigation name="cpu" level="13" />
+		</threshold>
+	</configuration>
+
+	<configuration sensor="temp-krait-400">
+		<threshold>
+			<mitigation name="cpu" level="off" />
+		</threshold>
+		<threshold trigger="80" clear="65">
+			<mitigation name="cpu" level="3" />
+		</threshold>
+		<threshold trigger="90" clear="75">
+			<mitigation name="cpu" level="5" />
+		</threshold>
+		<threshold trigger="95" clear="80">
+			<mitigation name="cpu" level="10" />
+		</threshold>
+		<threshold trigger="110" clear="100">
+			<mitigation name="cpu" level="13" />
+		</threshold>
+		<threshold trigger="120" clear="110">
+			<mitigation name="cpu" level="15" />
+		</threshold>
+	</configuration>
+</thermanager>
