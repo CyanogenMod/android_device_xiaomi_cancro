@@ -31,9 +31,6 @@ import init.target.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
-on property:init.svc.bootanim=running
-    setprop sys.perf.profile 2
-
 on init
     mkdir /persist 0771 system system
     mkdir /firmware 0771 system system
@@ -908,8 +905,7 @@ on property:persist.radio.ramdump_sdcard=1
     start modem_dump
 
 on property:service.bootanim.exit=1
-    setprop sys.perf.profile 1
-    #start mpdecision
+    start mpdecision
 
 #To enalbe fast dormancy for CU
 on property:persist.radio.modem=LTE-CU

@@ -267,18 +267,6 @@ service changepowermode /system/bin/changepowermode.sh
     oneshot
     disabled
 
-on property:sys.perf.profile=2
-    start changepowermode
-    stop thermanager
-
-on property:sys.perf.profile=1
-    start changepowermode
-    start thermanager
-
-on property:sys.perf.profile=0
-    start changepowermode
-    start thermanager
-
 on property:persist.sys.display_prefer=0
     write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x2
 on property:persist.sys.display_prefer=1
