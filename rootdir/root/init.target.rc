@@ -69,6 +69,10 @@ on post-fs-data
     chown system camera /sys/class/leds/torch-light/brightness
     chmod 0660 /sys/class/leds/torch-light/brightness
 
+    # Dynamic FPS
+    chown system graphics /sys/class/graphics/fb0/dynamic_fps
+    chmod 0644 /sys/class/graphics/fb0/dynamic_fps
+
 on boot
     chown system system /sys/class/input/input0/enabled
     chown system system /sys/class/input/input1/enabled
