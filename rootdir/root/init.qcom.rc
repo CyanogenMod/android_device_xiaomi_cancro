@@ -394,6 +394,7 @@ on charger
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
     start hvdcp
+    start charger_monitor
     class_start charger
 
     #Create a folder for SRS to be able to create a usercfg file
@@ -830,10 +831,9 @@ on property:usb_uicc.spi_bridge_enabled=1
 on property:usb_uicc.spi_bridge_enabled=0
     rmmod /system/lib/modules/ice40-hcd.ko
 
-service charger /sbin/healthd -c
+service charger /sbin/chargeonlymode
     class charger
-    critical
-    seclabel u:r:healthd:s0
+    seclabel u:r:chargeonlymode:s0
 
 service ssr_diag /system/bin/ssr_diag
     class late_start
@@ -871,6 +871,11 @@ on property:persist.usb.hvdcp.detect=true
 
 on property:persist.usb.hvdcp.detect=false
     stop hvdcp
+
+service charger_monitor /system/bin/charger_monitor
+    user system
+    group system
+    disabled
 
 service qbcharger /charger -m 1
     disabled

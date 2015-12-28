@@ -8,8 +8,8 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/root/chargeonlymode:root/sbin/chargeonlymode
 
 # Quick charging
 PRODUCT_PROPERTY_OVERRIDES += \

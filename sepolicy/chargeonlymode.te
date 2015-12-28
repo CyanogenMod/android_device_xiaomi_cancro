@@ -1,0 +1,18 @@
+#============= chargeonlymode ==============
+type chargeonlymode, domain;
+
+allow chargeonlymode console_device:chr_file { read write open };
+allow chargeonlymode graphics_device:chr_file { read write open ioctl };
+allow chargeonlymode rootfs:file entrypoint;
+allow chargeonlymode self:capability sys_boot;
+allow chargeonlymode self:netlink_kobject_uevent_socket { read create };
+allow chargeonlymode sysfs_usb_supply:dir search;
+allow chargeonlymode sysfs_usb_supply:file { read open };
+allow chargeonlymode input_device:chr_file { read open ioctl };
+allow chargeonlymode input_device:dir { read search open };
+allow chargeonlymode sysfs:file write;
+allow chargeonlymode sysfs_battery_supply:dir search;
+allow chargeonlymode sysfs_battery_supply:file { read open };
+allow chargeonlymode device:chr_file { create unlink };
+allow chargeonlymode device:dir { write remove_name add_name };
+allow chargeonlymode graphics_device:dir search;
