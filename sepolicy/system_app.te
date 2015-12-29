@@ -1,3 +1,3 @@
 #============= cmhw ==============
-allow system_app vibeamp_sysfs:file rw_file_perms;
-allow system_app display_sysfs:file rw_file_perms;
+allow system_app display_sysfs:file { read write };
+allow system_app vibeamp_sysfs:file { read write };

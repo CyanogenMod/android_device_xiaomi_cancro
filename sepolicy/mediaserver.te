@@ -1,4 +1,4 @@
 #============= mediaserver ==============
-allow mediaserver system_server:unix_stream_socket { read write };
-allow mediaserver system_file:file execmod;
 allow mediaserver sensorservice_service:service_manager find;
+allow mediaserver system_file:file execmod;
+allow mediaserver system_server:unix_stream_socket { read write };

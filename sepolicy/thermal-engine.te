@@ -1,6 +1,5 @@
 #============= thermal-engine ==============
 allow thermal-engine self:capability net_admin;
-allow thermal-engine self:capability net_admin;
 allow thermal-engine self:netlink_kobject_uevent_socket { read bind create setopt };
 allow thermal-engine sysfs_battery_supply:dir search;
 allow thermal-engine sysfs_battery_supply:file { read open };
