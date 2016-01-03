@@ -144,6 +144,7 @@ case "$target" in
         echo 2457600 > /sys/devices/system/cpu/cpu1/cpufreq/sys_cap_freq
         echo 2457600 > /sys/devices/system/cpu/cpu2/cpufreq/sys_cap_freq
         echo 2457600 > /sys/devices/system/cpu/cpu3/cpufreq/sys_cap_freq
+        echo 2 > /sys/devices/system/cpu/sched_mc_power_savings
         chown system.system /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
         chown system.system /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
         chown system.system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
@@ -154,7 +155,7 @@ case "$target" in
         chown system.system /sys/module/cpu_boost/parameters/input_boost_freq
         chown system.system /sys/module/cpu_boost/parameters/input_boost_ms
         echo 1 > /dev/cpuctl/apps/cpu.notify_on_migrate
-        #start mpdecision
+        start mpdecision
         setprop sys.perf.profile `getprop sys.perf.profile`
     ;;
 esac
