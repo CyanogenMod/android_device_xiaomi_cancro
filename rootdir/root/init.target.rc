@@ -136,6 +136,7 @@ service gsiff_daemon /system/bin/gsiff_daemon
     class late_start
     user gps
     group gps net_raw misc
+    seclabel u:r:gsiff_daemon:s0
 
 service qrngd /system/bin/qrngd -f
     class main
