@@ -51,7 +51,15 @@ on boot
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/module/msm_thermal/core_control/enabled 1
+
+    # msm_thermal
+    write /sys/kernel/msm_thermal/low_thresh "1574400 45 43"
+    write /sys/kernel/msm_thermal/mid_thresh "1267200 50 47"
+    write /sys/kernel/msm_thermal/high_thresh "1190400 55 53"
+    write /sys/kernel/msm_thermal/sampling_ms 10000
+    write /sys/kernel/msm_thermal/enabled 1
+    chown system system /sys/kernel/msm_thermal/user_maxfreq
+    chmod 0660 /sys/kernel/msm_thermal/user_maxfreq
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type

@@ -164,16 +164,10 @@ service qseecomd /system/bin/qseecomd
    group root
 
 service mpdecision /system/bin/mpdecision --avg_comp
-    class main
-    user root
-    group system
-    disabled
-
-service thermanager /system/bin/thermanager /system/etc/thermanager.xml
-    seclabel u:r:thermanager:s0
-    class late_start
-    user root
-    group root
+   class main
+   user root
+   group system
+   disabled
 
 service time_daemon /system/bin/time_daemon
    class late_start
