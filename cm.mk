@@ -37,10 +37,3 @@ PRODUCT_MODEL := MI Cancro
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
-
-# Device prop
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE="cancro" \
-    PRODUCT_NAME="cancro" \
-    BUILD_FINGERPRINT="Xiaomi/cancro/cancro:6.0.1/MMB29M/5.12.28:userdebug/test-keys" \
-    PRIVATE_BUILD_DESC="cancro-userdebug 6.0.1 MMB29M 5.12.28 test-keys"
