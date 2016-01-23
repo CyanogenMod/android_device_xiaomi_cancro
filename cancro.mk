@@ -5,8 +5,6 @@ LOCAL_PATH := device/xiaomi/cancro
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-PRODUCT_CHARACTERISTICS := nosdcard
-
 # Charger
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/chargeonlymode:root/sbin/chargeonlymode
@@ -272,8 +270,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
-    librmnetctl \
-    rmnetcli
+    librmnetctl
 
 # Keystore
 PRODUCT_PACKAGES += \
@@ -286,10 +283,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.fm.transmitter=false
-
-# USB
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
 
 # Misc dependency packages
 PRODUCT_PACKAGES += \

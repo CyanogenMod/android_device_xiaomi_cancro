@@ -23,7 +23,6 @@
     <bool name="config_wifi_batched_scan_supported">false</bool>
     <bool name="config_automatic_brightness_available">true</bool>
     <bool name="config_unplugTurnsOnScreen">true</bool>
-    <bool name="config_animateScreenLights">false</bool>
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
     <bool name="config_dreamsSupported">true</bool>
     <bool name="config_dreamsEnabledByDefault">false</bool>
@@ -36,6 +35,8 @@
     <!-- The duration (in milliseconds) that the radio will scan for a signal
     when there's no network connection. If the scan doesn't timeout, use zero -->
     <integer name="config_radioScanningTimeout">9000</integer>
+
+    <integer name="config_autoBrightnessBrighteningLightDebounce">400</integer>
 
     <!-- Configure mobile tcp buffer sizes in the form:
          rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max

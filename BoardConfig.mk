@@ -89,7 +89,6 @@ TARGET_USES_C2D_COMPOSITION       := true
 TARGET_USE_COMPAT_GRALLOC_PERFORM := true
 TARGET_USES_ION                   := true
 OVERRIDE_RS_DRIVER                := libRSDriver_adreno.so
-HAVE_ADRENO_SOURCE                := false
 VSYNC_EVENT_PHASE_OFFSET_NS       := 7500000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS    := 5000000
 
@@ -153,14 +152,8 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Use HW crypto for ODE
 TARGET_HW_DISK_ENCRYPTION := false
 
-# Added to indicate that protobuf-c is supported in this build
-PROTOBUF_SUPPORTED := true
-
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
-
-# Include an expanded selection of fonts
-EXTENDED_FONT_FOOTPRINT := true
 
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
