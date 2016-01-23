@@ -94,8 +94,6 @@ start_charger_monitor()
 }
 
 baseband=`getprop ro.baseband`
-izat_premium_enablement=`getprop ro.qc.sdk.izat.premium_enabled`
-izat_service_mask=`getprop ro.qc.sdk.izat.service_mask`
 
 #
 # Suppress default route installation during RA for IPV6; user space will take
@@ -107,65 +105,11 @@ do
 done
 echo 1 > /proc/sys/net/ipv6/conf/default/accept_ra_defrtr
 
-#
-# Start gpsone_daemon for SVLTE Type I & II devices
-#
-
-# platform id 126 is for MSM8974
-case "$platformid" in
-        "126")
-        start gpsone_daemon
-esac
-case "$target" in
-        "msm7630_fusion")
-        start gpsone_daemon
-esac
 case "$baseband" in
         "svlte2a")
-        start gpsone_daemon
         start bridgemgrd
         ;;
-        "sglte" | "sglte2")
-        start gpsone_daemon
-        ;;
 esac
-
-let "izat_service_gtp_wifi=$izat_service_mask & 2#1"
-let "izat_service_gtp_wwan_lite=($izat_service_mask & 2#10)>>1"
-let "izat_service_pip=($izat_service_mask & 2#100)>>2"
-
-if [ "$izat_premium_enablement" -ne 1 ]; then
-    if [ "$izat_service_gtp_wifi" -ne 0 ]; then
-# GTP WIFI bit shall be masked by the premium service flag
-        let "izat_service_gtp_wifi=0"
-    fi
-fi
-
-if [ "$izat_service_gtp_wwan_lite" -ne 0 ] ||
-   [ "$izat_service_gtp_wifi" -ne 0 ] ||
-   [ "$izat_service_pip" -ne 0 ]; then
-# OS Agent would also be started under the same condition
-    start location_mq
-fi
-
-if [ "$izat_service_gtp_wwan_lite" -ne 0 ] ||
-   [ "$izat_service_gtp_wifi" -ne 0 ]; then
-# start GTP services shared by WiFi and WWAN Lite
-    start xtwifi_inet
-    start xtwifi_client
-fi
-
-if [ "$izat_service_gtp_wifi" -ne 0 ] ||
-   [ "$izat_service_pip" -ne 0 ]; then
-# advanced WiFi scan service shared by WiFi and PIP
-    start lowi-server
-fi
-
-if [ "$izat_service_pip" -ne 0 ]; then
-# PIP services
-    start quipc_main
-    start quipc_igsn
-fi
 
 # start sensor related operation when the device is not X5
 if [ $(getprop ro.boot.hwversion | grep -e 5[0-9]) ]; then
