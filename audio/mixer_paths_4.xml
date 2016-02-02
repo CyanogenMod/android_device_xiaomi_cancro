@@ -765,6 +765,8 @@
         <ctl name="SLIM_0_TX Channels" value="One" />
         <ctl name="SLIM TX7 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
+        <ctl name="DEC6 Volume" value="84" />
+        <ctl name="ADC1 Volume" value="0" />
         <ctl name="IIR1 INP1 MUX" value="DEC6" />
     </path>
 
@@ -794,7 +796,7 @@
         <ctl name="SLIM TX7 MUX" value="DEC2" />
         <ctl name="DEC2 MUX" value="ADC5" />
         <ctl name="DEC2 Volume" value="84" />
-        <ctl name="ADC5 Volume" value="3" />
+        <ctl name="ADC5 Volume" value="0" />
         <ctl name="IIR1 INP1 MUX" value="DEC2" />
     </path>
 
@@ -892,6 +894,7 @@
         <ctl name="IIR1 INP1 MUX" value="DEC7" />
     </path>
 
+
     <path name="speaker-protected">
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="SLIM_0_RX Channels" value="One" />
@@ -917,6 +920,7 @@
 
     <path name="handset-mic">
         <path name="adc5" />
+        <ctl name="ADC5 Volume" value="3"/>
     </path>
 
     <path name="handset-stereo-mic">
@@ -926,10 +930,10 @@
         <ctl name="DEC2 MUX" value="ADC5" />
         <ctl name="DEC2 Volume" value="84" />
         <ctl name="ADC5 Volume" value="3" />
-        <ctl name="SLIM TX8 MUX" value="DEC3" />
-        <ctl name="DEC3 MUX" value="ADC4" />
-        <ctl name="DEC3 Volume" value="84" />
-        <ctl name="ADC4 Volume" value="3" />
+        <ctl name="SLIM TX8 MUX" value="DEC6" />
+        <ctl name="DEC6 MUX" value="ADC1" />
+        <ctl name="DEC6 Volume" value="84" />
+        <ctl name="ADC1 Volume" value="3" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
@@ -959,7 +963,7 @@
         <ctl name="HPHL DAC Switch" value="1" />
         <ctl name="HPHL Volume" value="20" />
         <ctl name="HPHR Volume" value="20" />
-        <ctl name="TI PA Gain" value="36" />
+        <ctl name="TI PA Gain" value="53" />
     </path>
 
     <path name="headset-mic">
@@ -1029,6 +1033,7 @@
     <path name="speaker-protected-and-headphones">
         <path name="speaker-and-headphones" />
     </path>
+
 
     <path name="speaker-and-headphones-fluid">
         <path name="headphones" />
@@ -1194,10 +1199,10 @@
         <ctl name="DEC2 MUX" value="ADC5" />
         <ctl name="DEC2 Volume" value="84" />
         <ctl name="ADC5 Volume" value="3" />
-        <ctl name="SLIM TX8 MUX" value="DEC3" />
-        <ctl name="DEC3 MUX" value="ADC4" />
-        <ctl name="DEC3 Volume" value="84" />
-        <ctl name="ADC4 Volume" value="3" />
+        <ctl name="SLIM TX8 MUX" value="DEC6" />
+        <ctl name="DEC6 MUX" value="ADC1" />
+        <ctl name="DEC6 Volume" value="84" />
+        <ctl name="ADC1 Volume" value="3" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
@@ -1245,11 +1250,11 @@
     </path>
 
     <path name="top-mic">
-        <path name="adc4" />
+        <path name="adc1" />
     </path>
 
     <path name="back-mic">
-        <path name="dmic1" />
+        <path name="adc4" />
     </path>
 
     <path name="voice-main-mic">
@@ -1257,21 +1262,21 @@
     </path>
 
     <path name="voice-top-mic">
-        <path name="adc4" />
+        <path name="adc1" />
     </path>
 
     <path name="voice-back-mic">
-        <path name="dmic1" />
+        <path name="adc4" />
     </path>
 
     <!-- Dual MIC devices -->
     <path name="speaker-dmic-endfire">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
-        <ctl name="SLIM TX7 MUX" value="DEC3" />
-        <ctl name="DEC3 MUX" value="ADC4" />
-        <ctl name="DEC3 Volume" value="84" />
-        <ctl name="ADC4 Volume" value="12" />
+        <ctl name="SLIM TX7 MUX" value="DEC6" />
+        <ctl name="DEC6 MUX" value="ADC1" />
+        <ctl name="DEC6 Volume" value="84" />
+        <ctl name="ADC1 Volume" value="12" />
         <ctl name="SLIM TX8 MUX" value="DEC2" />
         <ctl name="DEC2 MUX" value="ADC5" />
         <ctl name="DEC2 Volume" value="84" />
@@ -1296,9 +1301,10 @@
         <ctl name="DEC2 MUX" value="ADC5" />
         <ctl name="DEC2 Volume" value="84" />
         <ctl name="ADC5 Volume" value="12" />
-        <ctl name="SLIM TX8 MUX" value="DEC7" />
-        <ctl name="DEC7 MUX" value="DMIC1" />
-        <ctl name="DEC7 Volume" value="84" />
+        <ctl name="SLIM TX8 MUX" value="DEC3" />
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="DEC3 Volume" value="84" />
+        <ctl name="ADC4 Volume" value="12" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 

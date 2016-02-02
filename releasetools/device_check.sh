@@ -1,8 +1,7 @@
 #!/sbin/sh
 #
-# Copyright (C) 2015 CyanogenMod Project
+# Copyright (C) 2016 CyanogenMod Project
 #
-# by Victor Roque (victor.rooque@gmail.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,10 +19,17 @@
 RAW_ID=`cat /sys/devices/system/soc/soc0/raw_id`
 
 if [ $RAW_ID == 1974 ]; then
- rm -rf /system/app/NfcNci
- rm -rf /system/priv-app/Tag
- rm -rf /system/lib/*nfc*
- rm -rf /system/etc/*nfc*
- rm -rf /system/etc/permissions/*nfc*
- rm -rf /system/vendor/firmware/*bcm*
+    rm -rf /system/app/NfcNci
+    rm -rf /system/priv-app/Tag
+    rm -rf /system/lib/*nfc*
+    rm -rf /system/etc/*nfc*
+    rm -rf /system/etc/permissions/*nfc*
+    rm -rf /system/vendor/firmware/*bcm*
+    rm -rf /system/etc/acdbdata/MTP
+    mv /system/etc/MTP_4 /system/etc/MPT
+    rm -f /system/etc/mixer_paths.xml
+    mv /system/etc/mixer_paths_4.xml /system/etc/mixer_paths.xml
+else
+    rm -rf /system/etc/acdbdata/MTP_4
+    rm -f /system/etc/mixer_paths_4.xml
 fi
