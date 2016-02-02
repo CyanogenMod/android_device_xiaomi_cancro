@@ -19,17 +19,25 @@
 RAW_ID=`cat /sys/devices/system/soc/soc0/raw_id`
 
 if [ $RAW_ID == 1974 ]; then
+    # Remove NFC
     rm -rf /system/app/NfcNci
     rm -rf /system/priv-app/Tag
     rm -rf /system/lib/*nfc*
     rm -rf /system/etc/*nfc*
     rm -rf /system/etc/permissions/*nfc*
     rm -rf /system/vendor/firmware/*bcm*
+    # Use Mi4 audio configs
     rm -rf /system/etc/acdbdata/MTP
     mv /system/etc/MTP_4 /system/etc/MPT
     rm -f /system/etc/mixer_paths.xml
     mv /system/etc/mixer_paths_4.xml /system/etc/mixer_paths.xml
+    # Mi4 libdirac config
+    rm -f /system/vendor/etc/diracmobile.config
+    mv /system/vendor/etc/diracmobile_4.config /system/vendor/etc/diracmobile.config
 else
+    # Remove Mi4 audio configs
     rm -rf /system/etc/acdbdata/MTP_4
     rm -f /system/etc/mixer_paths_4.xml
+    # Remove Mi4 libdirac config
+    rm -f /system/vendor/etc/diracmobile_4.config
 fi

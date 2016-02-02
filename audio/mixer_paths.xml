@@ -24,10 +24,10 @@
     <ctl name="LINEOUT2 Volume" value="12" />
     <ctl name="LINEOUT3 Volume" value="12" />
     <ctl name="LINEOUT4 Volume" value="12" />
-    <ctl name="HPHL Volume" value="20" />
-    <ctl name="HPHR Volume" value="20" />
-    <ctl name="RX1 Digital Volume" value="84" />
-    <ctl name="RX2 Digital Volume" value="84" />
+    <ctl name="HPHL Volume" value="22" />
+    <ctl name="HPHR Volume" value="22" />
+    <ctl name="RX1 Digital Volume" value="89" />
+    <ctl name="RX2 Digital Volume" value="89" />
     <ctl name="RX3 Digital Volume" value="84" />
     <ctl name="RX4 Digital Volume" value="84" />
     <ctl name="RX5 Digital Volume" value="84" />
@@ -821,7 +821,7 @@
         <ctl name="RX7 MIX1 INP1" value="RX1" />
         <ctl name="COMP0 Switch" value="1" />
         <ctl name="RX7 Digital Volume" value="84" />
-        <ctl name="SPK DRV Volume" value="8" />
+        <ctl name="SPK DRV Volume" value="10" />
     </path>
 
     <path name="speaker-fluid">
@@ -840,8 +840,8 @@
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX3 MIX1 INP1" value="RX1" />
         <ctl name="RX5 MIX1 INP1" value="RX2" />
-        <ctl name="LINEOUT1 Volume" value="20" />
-        <ctl name="LINEOUT2 Volume" value="20" />
+        <ctl name="LINEOUT1 Volume" value="22" />
+        <ctl name="LINEOUT2 Volume" value="22" />
     </path>
 
     <path name="speaker-liquid">
@@ -849,8 +849,8 @@
         <ctl name="RDAC5 MUX" value="DEM3_INV" />
         <ctl name="RDAC7 MUX" value="DEM5_INV" />
         <ctl name="COMP2 Switch" value="1" />
-        <ctl name="LINEOUT3 Volume" value="20" />
-        <ctl name="LINEOUT4 Volume" value="20" />
+        <ctl name="LINEOUT3 Volume" value="22" />
+        <ctl name="LINEOUT4 Volume" value="22" />
     </path>
 
     <path name="sidetone-iir">
@@ -898,7 +898,7 @@
         <ctl name="RX7 MIX1 INP1" value="RX1" />
         <ctl name="COMP0 Switch" value="1" />
         <ctl name="RX7 Digital Volume" value="84" />
-        <ctl name="SPK DRV Volume" value="8" />
+        <ctl name="SPK DRV Volume" value="10" />
     </path>
 
     <path name="vi-feedback">
@@ -925,11 +925,11 @@
         <ctl name="SLIM TX7 MUX" value="DEC2" />
         <ctl name="DEC2 MUX" value="ADC5" />
         <ctl name="DEC2 Volume" value="84" />
-        <ctl name="ADC5 Volume" value="3" />
+        <ctl name="ADC5 Volume" value="12" />
         <ctl name="SLIM TX8 MUX" value="DEC3" />
         <ctl name="DEC3 MUX" value="ADC4" />
         <ctl name="DEC3 Volume" value="84" />
-        <ctl name="ADC4 Volume" value="3" />
+        <ctl name="ADC4 Volume" value="12" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
@@ -1104,8 +1104,8 @@
         <ctl name="HPHL DAC Switch" value="1" />
         <ctl name="HPHL Volume" value="14" />
         <ctl name="HPHR Volume" value="14" />
-        <ctl name="RX1 Digital Volume" value="81" />
-        <ctl name="RX2 Digital Volume" value="81" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
         <ctl name="ANC Slot" value="0" />
         <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
         <ctl name="ANC1 MUX" value="ADC3" />
@@ -1193,11 +1193,11 @@
         <ctl name="SLIM TX7 MUX" value="DEC2" />
         <ctl name="DEC2 MUX" value="ADC5" />
         <ctl name="DEC2 Volume" value="84" />
-        <ctl name="ADC5 Volume" value="3" />
+        <ctl name="ADC5 Volume" value="12" />
         <ctl name="SLIM TX8 MUX" value="DEC3" />
         <ctl name="DEC3 MUX" value="ADC4" />
         <ctl name="DEC3 Volume" value="84" />
-        <ctl name="ADC4 Volume" value="3" />
+        <ctl name="ADC4 Volume" value="12" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 

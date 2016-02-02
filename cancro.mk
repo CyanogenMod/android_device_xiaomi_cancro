@@ -194,6 +194,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicerec=true \
     persist.audio.fluence.speaker=false
 
+# Libdirac
+PRODUCT_PACKAGES += \
+    libdirac
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/libdirac/diracmobile.config:system/vendor/etc/diracmobile.config \
+     $(LOCAL_PATH)/libdirac/diracmobile_4.config:system/vendor/etc/diracmobile.config
+
 # Media profile
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
