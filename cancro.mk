@@ -200,7 +200,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/libdirac/diracmobile.config:system/vendor/etc/diracmobile.config \
-     $(LOCAL_PATH)/libdirac/diracmobile_4.config:system/vendor/etc/diracmobile.config
+     $(LOCAL_PATH)/libdirac/diracmobile_4.config:system/vendor/etc/diracmobile_4.config
 
 # Media profile
 PRODUCT_COPY_FILES += \
