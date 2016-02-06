@@ -28,7 +28,7 @@ if [ $RAW_ID == 1974 ]; then
     rm -rf /system/vendor/firmware/*bcm*
     # Use Mi4 audio configs
     rm -rf /system/etc/acdbdata/MTP
-    mv /system/etc/MTP_4 /system/etc/MPT
+    mv /system/etc/MTP_4 /system/etc/MTP
     rm -f /system/etc/mixer_paths.xml
     mv /system/etc/mixer_paths_4.xml /system/etc/mixer_paths.xml
     # Mi4 libdirac config

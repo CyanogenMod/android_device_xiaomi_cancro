@@ -36,6 +36,9 @@
     when there's no network connection. If the scan doesn't timeout, use zero -->
     <integer name="config_radioScanningTimeout">9000</integer>
 
+    <!-- Our modem doesn't support this query yet -->
+    <string name="config_radio_access_family">GPRS|EDGE|UMTS|HSDPA|HSUPA|HSPA|LTE|HSPAP|GSM|TD_SCDMA|WCDMA|LTE_CA</string>
+
     <integer name="config_autoBrightnessBrighteningLightDebounce">400</integer>
 
     <!-- Configure mobile tcp buffer sizes in the form:
