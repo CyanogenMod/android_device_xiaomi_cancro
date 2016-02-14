@@ -72,6 +72,40 @@ on post-fs-data
     # Dynamic FPS
     chown system graphics /sys/class/graphics/fb0/dynamic_fps
     chmod 0644 /sys/class/graphics/fb0/dynamic_fps
+    # Adjust vibrator amplitude
+    write /sys/class/timed_output/vibrator/amp 95
+
+    # VibratorHW
+    chown root system /sys/class/timed_output/vibrator/amp
+    chmod 0664 /sys/class/timed_output/vibrator/amp
+    restorecon /sys/class/timed_output/vibrator/amp
+
+    #  KeyDisabler
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/keys_off
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/keys_off
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/keys_off
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/keys_off
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/keys_off
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/keys_off
+
+    # HighTouchSensitivity
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/sensitive_mode
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/sensitive_mode
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/sensitive_mode
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/sensitive_mode
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/sensitive_mode
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/sensitive_mode
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/stylus
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/stylus
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/stylus
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus
+
+    # RBG calibration
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+    restorecon /sys/devices/virtual/graphics/fb0/rgb
 
 on boot
     chown system system /sys/class/input/input0/enabled

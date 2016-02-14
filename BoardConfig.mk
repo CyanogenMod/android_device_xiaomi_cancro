@@ -136,8 +136,10 @@ TARGET_RECOVERY_PIXEL_FORMAT       := "RGBX_8888"
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
 
 # CM Hardware
+BOARD_USES_CYANOGEN_HARDWARE = true
 BOARD_HARDWARE_CLASS += \
-    $(CANCRO_PATH)/cmhw
+    $(CANCRO_PATH)/cmhw \
+    hardware/cyanogen/cmhw
 
 # No old RPC for prop
 TARGET_NO_RPC := true

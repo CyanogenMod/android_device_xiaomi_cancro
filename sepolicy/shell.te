@@ -1,4 +1,6 @@
 #============= shell ==============
 allow shell init_exec:file getattr;
+allow shell livedisplay_sysfs:file getattr;
 allow shell logd_exec:file { read getattr open execute execute_no_trans };
+allow shell sysfs_graphics:file getattr;
 allow shell tombstone_data_file:dir getattr;

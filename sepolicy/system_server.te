@@ -6,4 +6,5 @@ allow system_server sysfs_usb_supply:file { read open getattr };
 
 #============= cmhw ==============
 allow system_server display_sysfs:file { read write };
+allow system_server livedisplay_sysfs:file { read write };
 allow system_server vibeamp_sysfs:file { read write open getattr };

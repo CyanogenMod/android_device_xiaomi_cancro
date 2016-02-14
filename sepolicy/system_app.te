@@ -1,3 +1,4 @@
 #============= cmhw ==============
 allow system_app display_sysfs:file { read write };
+allow system_app livedisplay_sysfs:file { read write };
 allow system_app vibeamp_sysfs:file { read write };
