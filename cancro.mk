@@ -167,6 +167,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/init.qcom.audio.sh:system/etc/init.qcom.audio.sh \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
+    $(LOCAL_PATH)/audio/diracmobile.config:system/vendor/etc/diracmobile.config \
+    $(LOCAL_PATH)/audio/diracmobile_4.config:system/vendor/etc/diracmobile_4.config \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/mixer_paths_4.xml:system/etc/mixer_paths_4.xml \
     $(LOCAL_PATH)/audio/acdb/MTP/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
@@ -192,14 +194,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=true \
     persist.audio.fluence.speaker=false
-
-# Libdirac
-PRODUCT_PACKAGES += \
-    libdirac
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/libdirac/diracmobile.config:system/vendor/etc/diracmobile.config \
-     $(LOCAL_PATH)/libdirac/diracmobile_4.config:system/vendor/etc/diracmobile_4.config
 
 # Media profile
 PRODUCT_COPY_FILES += \
