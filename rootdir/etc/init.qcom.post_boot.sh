@@ -154,7 +154,7 @@ case "$target" in
         chown system.system /sys/module/cpu_boost/parameters/sync_threshold
         chown system.system /sys/module/cpu_boost/parameters/input_boost_freq
         chown system.system /sys/module/cpu_boost/parameters/input_boost_ms
-        echo 1 > /dev/cpuctl/apps/cpu.notify_on_migrate
+        echo 0 > /dev/cpuctl/apps/cpu.notify_on_migrate
         start mpdecision
         setprop sys.perf.profile `getprop sys.perf.profile`
     ;;
