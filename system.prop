@@ -6,6 +6,8 @@ mmp.enable.3g2=true
 mm.enable.smoothstreaming=true
 mm.enable.qcom_parser=37491
 
+persist.data.qmi.adb_logmask=0
+
 # VIDC: debug_levels
 # 1:ERROR 2:HIGH 4:LOW 0:NOLOGS 7:AllLOGS
 vidc.debug.level=1
