@@ -15,13 +15,6 @@
      limitations under the License.
 -->
 <resources>
-
-    <!-- Default value for proximity check on screen wake
-     NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
-    <bool name="config_proximityCheckOnWake">true</bool>
-    <integer name="config_proximityCheckTimeout">250</integer>
-    <bool name="config_proximityCheckOnWakeEnabledByDefault">false</bool>
-
     <!-- Ambient lux at which to enable outdoor mode when LiveDisplay is enabled -->
     <integer name="config_outdoorAmbientLux">12000</integer>
 </resources>
