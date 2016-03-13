@@ -245,9 +245,6 @@ on boot
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
-# Enable manual network selection function and distinguish 2G/3G/4G
-    setprop persist.radio.rat_on combine
-
     #charger
     chown root system /sys/module/qpnp_charger/parameters/charger_monitor
     chown root system /sys/module/qpnp_charger/parameters/ext_ovp_present

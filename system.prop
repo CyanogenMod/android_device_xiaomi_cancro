@@ -6,18 +6,69 @@ mmp.enable.3g2=true
 mm.enable.smoothstreaming=true
 mm.enable.qcom_parser=37491
 
+ro.ril.enable.amr.wideband=1
+ro.telephony.default_network=9
+
+wifi.interface=wlan0
+persist.data.netmgrd.qos.enable=true
+persist.data.tcpackprio.enable=true
+ro.data.large_tcp_window_size=true
+persist.cne.feature=0
+
+ro.fm.transmitter=false
+
 persist.data.qmi.adb_logmask=0
 
-# VIDC: debug_levels
-# 1:ERROR 2:HIGH 4:LOW 0:NOLOGS 7:AllLOGS
 vidc.debug.level=1
+
+qcom.bt.dev_power_class=1
+bluetooth.hfp.client=1
+ro.bluetooth.alwaysbleon=true
 
 # System property for cabl
 ro.qualcomm.cabl=1
 ro.qcom.ad=1
 ro.qcom.ad.calib.data=/system/etc/calib.cfg
 
+ro.qualcomm.sensors.qmd=true
+ro.qualcomm.sensors.smd=true
+ro.qualcomm.sensors.cmc=true
+ro.qualcomm.sensors.vmd=true
+ro.qualcomm.sensors.gtap=true
+ro.qualcomm.sensors.pedometer=true
+ro.qualcomm.sensors.pam=true
+ro.qualcomm.sensors.scrn_ortn=true
+ro.qualcomm.sensors.georv=true
+ro.qualcomm.sensors.game_rv=true
+ro.qc.sensors.step_detector=true
+ro.qc.sensors.step_counter=true
+ro.qc.sensors.max_geomag_rotvec=true
+debug.qualcomm.sns.hal=w
+debug.qualcomm.sns.daemon=w
+debug.qualcomm.sns.libsensor1=w
 ro.qc.sdk.sensors.gestures=true
 ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.camera.facialproc=false
+
+ro.qc.sdk.audio.ssr=false
+ro.qc.sdk.audio.fluencetype=fluence
+audio.offload.video=false
+use.voice.path.for.pcm.voip=true
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=true
+persist.audio.fluence.speaker=false
+
+ro.qualcomm.perf.cores_online=1
+dalvik.vm.dex2oat-swap=false
+ro.gps.agps_provider=1
+persist.debug.wfd.enable=1
+persist.demo.hdmirotationlock=false
+ro.hdmi.enable=true
+ro.opengles.version=196608
+ro.sf.lcd_density=480
+persist.hwc.mdpcomp.enable=true
+persist.timed.enable=true
+persist.sys.wfd.virtual=0
+persist.usb.hvdcp.detect=true
 persist.camera.cpp.duplication=false
+camera2.portability.force_api=1
