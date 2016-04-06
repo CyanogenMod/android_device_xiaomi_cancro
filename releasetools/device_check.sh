@@ -27,8 +27,8 @@ if [ $RAW_ID == 1974 ]; then
     rm -rf /system/etc/permissions/*nfc*
     rm -rf /system/vendor/firmware/*bcm*
     # Use Mi4 audio configs
-    rm -rf /system/etc/acdbdata/MTP
-    mv /system/etc/MTP_4 /system/etc/MTP
+    rm -f /system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
+    mv /system/etc/MTP/MTP_Speaker_cal_4.acdb /system/etc/MTP/MTP_Speaker_cal.acdb
     rm -f /system/etc/mixer_paths.xml
     mv /system/etc/mixer_paths_4.xml /system/etc/mixer_paths.xml
     # Mi4 libdirac config
@@ -36,7 +36,7 @@ if [ $RAW_ID == 1974 ]; then
     mv /system/vendor/etc/diracmobile_4.config /system/vendor/etc/diracmobile.config
 else
     # Remove Mi4 audio configs
-    rm -rf /system/etc/acdbdata/MTP_4
+    rm -rf /system/etc/acdbdata/MTP/MTP_Speaker_cal_4.acdb
     rm -f /system/etc/mixer_paths_4.xml
     # Remove Mi4 libdirac config
     rm -f /system/vendor/etc/diracmobile_4.config
