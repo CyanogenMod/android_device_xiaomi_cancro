@@ -11,4 +11,3 @@
 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/sensitive_mode u:object_r:display_sysfs:s0
 /sys/bus/i2c/drivers/atmel_mxt_ts/2-004a/stylus              u:object_r:display_sysfs:s0
 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus         u:object_r:display_sysfs:s0
-/sys/devices/virtual/graphics/fb0/color_enhance              u:object_r:display_sysfs:s0
