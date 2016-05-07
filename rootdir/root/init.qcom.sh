@@ -38,22 +38,19 @@ fi
 start_sensors()
 {
     if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
-        mkdir -p /data/system/sensors
-        chown -h system.system /data/system/sensors
-        touch /data/system/sensors/settings
-        chmod -h 775 /data/system/sensors
-        chmod -h 664 /data/system/sensors/settings
-        chown -h system /data/system/sensors/settings
-
         mkdir -p /data/misc/sensors
         chmod -h 775 /data/misc/sensors
         mkdir -p /persist/misc/sensors
         chmod 775 /persist/misc/sensors
 
-        if [ ! -s /data/system/sensors/settings ]; then
+        touch /persist/misc/sensors/settings
+        chmod -h 664 /data/system/sensors/settings
+        chown -h system /persist/misc/sensors/settings
+
+        if [ ! -s /persist/misc/sensors/settings ]; then
             # If the settings file is empty, enable sensors HAL
             # Otherwise leave the file with it's current contents
-            echo 1 > /data/system/sensors/settings
+            echo 1 > /persist/misc/sensors/settings
         fi
         start sensors
     fi
@@ -79,7 +76,7 @@ start_battery_monitor()
 start_charger_monitor()
 {
 	if ls /sys/module/qpnp_charger/parameters/charger_monitor; then
-		chown -h root.system /sys/module/qpnp_charger/parameters/*
+		chown root.system /sys/module/qpnp_charger/parameters/*
 		chown root.system /sys/class/power_supply/battery/input_current_max
 		chown root.system /sys/class/power_supply/battery/input_current_trim
 		chown root.system /sys/class/power_supply/battery/input_current_settled
@@ -93,8 +90,16 @@ start_charger_monitor()
 	fi
 }
 
-baseband=`getprop ro.baseband`
+start_copying_prebuilt_qcril_db()
+{
+    if [ -f /system/vendor/qcril.db -a ! -f /data/misc/radio/qcril.db ]; then
+        cp /system/vendor/qcril.db /data/misc/radio/qcril.db
+        chown -h radio.radio /data/misc/radio/qcril.db
+    fi
+}
 
+
+baseband=`getprop ro.baseband`
 #
 # Suppress default route installation during RA for IPV6; user space will take
 # care of this
@@ -124,10 +129,56 @@ if [ $(getprop ro.boot.hwversion | grep -e 4[0-9]) ]; then
     echo 20 > /sys/class/leds/button-backlight1/max_brightness
 fi
 
+leftvalue=`getprop permanent.button.bl.leftvalue`
+rightvalue=`getprop permanent.button.bl.rightvalue`
+
 # update the brightness to meet the requirement from HW
 if [ $(getprop ro.boot.hwversion | grep -e 5[0-9]) ]; then
-    echo 70 > /sys/class/leds/button-backlight/max_brightness
-    echo 70 > /sys/class/leds/button-backlight1/max_brightness
+    if [ "$leftvalue" = "" ]; then
+        echo 15 > /sys/class/leds/button-backlight1/max_brightness
+    else
+        echo $leftvalue > /sys/class/leds/button-backlight1/max_brightness
+    fi
+    if [ "$rightvalue" = "" ]; then
+        echo 9 > /sys/class/leds/button-backlight/max_brightness
+    else
+        echo $rightvalue > /sys/class/leds/button-backlight/max_brightness
+    fi
+fi
+
+# Update the panel color property
+if [ $(getprop ro.boot.hwversion | grep -e 5[0-9]) ]; then
+    if [ -f /sys/bus/i2c/devices/2-004c/panel_color ]; then
+        # Atmel
+        color=`cat /sys/bus/i2c/devices/2-004c/panel_color`
+    elif [ -d /sys/bus/i2c/devices/2-0020/input ]; then
+        # Synaptics
+        syna_folder=`ls /sys/bus/i2c/devices/2-0020/input/ | grep -e ^input`
+        if [ -f /sys/bus/i2c/devices/2-0020/input/$syna_folder/panelcolor ]; then
+            color=`cat /sys/bus/i2c/devices/2-0020/input/$syna_folder/panelcolor`
+        fi
+    else
+        color="0"
+    fi
+
+    case "$color" in
+        "1")
+            setprop sys.panel.color WHITE
+            echo WHITE
+            ;;
+        "2")
+            setprop sys.panel.color BLACK
+            echo BLACK
+            ;;
+        "6")
+            setprop sys.panel.color PINK
+            echo PINK
+            ;;
+        *)
+            setprop sys.panel.color UNKNOWN
+            echo UNKNOWN
+            ;;
+    esac
 fi
 
 case "$target" in
@@ -193,3 +244,20 @@ case "$target" in
         start_charger_monitor
         ;;
 esac
+
+bootmode=`getprop ro.bootmode`
+emmc_boot=`getprop ro.boot.emmc`
+case "$emmc_boot"
+    in "true")
+        if [ "$bootmode" != "charger" ]; then # start rmt_storage and rfs_access
+            start rmt_storage
+            start rfs_access
+        fi
+    ;;
+esac
+
+#
+# Copy qcril.db if needed for RIL
+#
+start_copying_prebuilt_qcril_db
+echo 1 > /data/misc/radio/db_check_done

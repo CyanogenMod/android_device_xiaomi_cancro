@@ -45,9 +45,10 @@ else
     soc_hwver=`cat /sys/devices/system/soc/soc0/platform_version` 2> /dev/null
 fi
 
-log -t BOOT -p i "MSM target '$1', SoC '$soc_hwplatform', HwID '$soc_hwid', SoC ver '$soc_hwver'"
+platform=`getprop ro.board.platform`
+log -t BOOT -p i "MSM target '$platform', SoC '$soc_hwplatform', HwID '$soc_hwid', SoC ver '$soc_hwver'"
 
-case "$1" in
+case "$platform" in
     "msm7630_surf" | "msm7630_1x" | "msm7630_fusion")
         case "$soc_hwplatform" in
             "FFA" | "SVLTE_FFA")
@@ -162,7 +163,10 @@ case "$1" in
         ;;
 esac
 
-#Setup display nodes & permissions
+# Setup display nodes & permissions
+# HDMI can be fb1 or fb2
+# Loop through the sysfs nodes and determine
+# the HDMI(dtv panel)
 
 function set_perms() {
     #Usage set_perms <filename> <ownership> <permission>

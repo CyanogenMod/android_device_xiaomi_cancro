@@ -36,12 +36,13 @@ on init
     mkdir /firmware 0771 system system
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
+    mkdir /storage/udisk 000 system system
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-    # Allow subsystem (modem etc) debugging
-    #write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
+    # Do not allow subsystem (modem etc) debugging
+    # write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
     write /sys/kernel/boot_adsp/boot 1
     exec u:r:qti_init_shell:s0 -- /init.qcom.early_boot.sh
 
@@ -85,7 +86,7 @@ on boot
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
 
-    mkdir /persist/bluetooth 0770 bluetooth bluetooth
+    # mkdir /persist/bluetooth 0770 bluetooth bluetooth
 
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
@@ -97,14 +98,17 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    #Create NETMGR daemon socket area
-    mkdir /dev/socket/netmgr 0750 radio radio
-
     #Create PERFD deamon related dirs
+    mkdir /dev/socket/perfd 0755 root system
+    chmod 2755 /dev/socket/perfd
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
+    mkdir /persist/drm 0770 system system
+
+    #Create NETMGR daemon socket area
+    mkdir /dev/socket/netmgr 0750 radio radio
 
     chown root radio /proc/cmdline
     chmod 0444 /proc/cmdline
@@ -127,7 +131,7 @@ on boot
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
-    #For bridgemgr daemon to inform the USB driver of the correct transport
+    # For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
     # For setting tcp delayed ack
@@ -286,6 +290,13 @@ on post-fs-data
     chown system system /data/connectivity
     restorecon_recursive /data/connectivity
 
+    # Create the directories used by DPM subsystem
+    mkdir /data/dpm 0771 system system
+    chown system system /data/dpm
+
+    mkdir /data/dpm/nsrm 0771 system system
+    chown system system /data/dpm/nsrm
+
     mkdir /data/connectivity/nsrm 0771 system system
     chown system system /data/connectivity/nsrm
 
@@ -385,6 +396,13 @@ service usbhub_init /system/bin/usbhub_init
    user root
    disabled
    oneshot
+
+service mpdecision /system/bin/mpdecision
+    class main
+    user root
+    disabled
+    socket perfd seqpacket 0666 root system
+
 
 service qcomsysd /system/bin/qcom-system-daemon
     class main

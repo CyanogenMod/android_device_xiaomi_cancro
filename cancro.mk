@@ -5,10 +5,6 @@ LOCAL_PATH := device/xiaomi/cancro
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Charger
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/root/chargeonlymode:root/sbin/chargeonlymode
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -23,7 +19,6 @@ PRODUCT_PACKAGES += \
     init.qcom.factory.sh \
     init.qcom.sh \
     init.qcom.ssr.sh \
-    init.qcom.syspart_fixup.sh \
     init.qcom.usb.sh
 
 # QCOM Config Script
@@ -36,10 +31,6 @@ PRODUCT_PACKAGES += \
     init.qcom.wifi.sh \
     qca6234-service.sh \
     usf_post_boot.sh
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/mount_ext4.sh:system/bin/mount_ext4.sh \
-    $(LOCAL_PATH)/rootdir/root/e2fsck_static:root/sbin/e2fsck_static
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -124,10 +115,6 @@ PRODUCT_COPY_FILES += \
 
 # Proprietery Firmware
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/android_model_facea.dat:system/etc/android_model_facea.dat \
-    $(LOCAL_PATH)/rootdir/etc/android_model_faceg.dat:system/etc/android_model_faceg.dat \
-    $(LOCAL_PATH)/rootdir/etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin:system/etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin \
-    $(LOCAL_PATH)/rootdir/etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin.pca:system/etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin.pca \
     $(LOCAL_PATH)/rootdir/etc/xtwifi.conf:system/etc/xtwifi.conf \
     $(LOCAL_PATH)/rootdir/etc/calib.cfg:system/etc/calib.cfg \
     $(LOCAL_PATH)/rootdir/etc/modem/Diag.cfg:system/etc/modem/Diag.cfg
