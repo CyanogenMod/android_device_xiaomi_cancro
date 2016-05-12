@@ -81,8 +81,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     }
 
     property_set("ro.product.device", "cancro");
-    property_set("ro.build.fingerprint", "Xiaomi/cancro/cancro:6.0.1/MMB29M/6.1.21:userdebug/test-keys");
-    property_set("ro.build.description", "cancro-userdebug 6.0.1 MMB29M 6.1.21 test-keys");
+    property_set("ro.build.fingerprint", "Xiaomi/cancro/cancro:6.0.1/MMB29M/6.5.12:userdebug/test-keys");
+    property_set("ro.build.description", "cancro-userdebug 6.0.1 MMB29M 6.5.12 test-keys");
 
     switch (raw_id) {
         case 1978:

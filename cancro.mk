@@ -210,7 +210,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ebtables \
     ethertypes \
-    curl \
     libnl_2 \
     libbson
 
@@ -220,16 +219,8 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
-# System properties
-PRODUCT_PROPERTY_OVERRIDES += \
-
-# Zip
-PRODUCT_PACKAGES += \
-    zip
-
-# SoundRecorder
-PRODUCT_PACKAGES += \
-    SoundRecorder
+# Baseband assertion
+PRODUCT_PACKAGES += librecovery_updater_cancro
 
 # Permissions
 PRODUCT_COPY_FILES += \

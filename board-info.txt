@@ -1,0 +1,1 @@
+require version-baseband=MPSS.DI.4.0
