@@ -1,6 +1,9 @@
+etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin.pca
+etc/android_model_faceg.dat
 etc/permissions/android.hardware.consumerir.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/qcnvitems.xml
+etc/android_model_facea.dat
 etc/firmware/wcnss.b08
 etc/firmware/wcnss.b06
 etc/firmware/wcnss.mdt
@@ -27,6 +30,7 @@ etc/lut.dat
 etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/data/qmi_config.xml
+etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin
 priv-app/qcrilmsgtunnel.apk
 lib/libdrmfs.so
 lib/libdrmdiag.so
@@ -51,8 +55,10 @@ lib/libchromatix_s5k3m2_liveshot.so
 lib/libgps.utils.so
 lib/libdrmtime.so
 lib/libmmcamera_interface.so
+lib/libDiracAPI_SHARED.so
 lib/libstm-log.so
 lib/libloc_api_v02.so
+lib/soundfx/libdirac.so
 lib/libchromatix_imx225_liveshot.so
 lib/librpmb.so
 lib/libmdmdetect.so
@@ -78,6 +84,7 @@ bin/mm-qcamera-daemon
 bin/lowi-server
 bin/qseecomd
 bin/xtwifi-client
+bin/charger_monitor
 bin/xtwifi-inet-agent
 bin/btnvtool
 bin/wcnss_filter
@@ -89,9 +96,7 @@ bin/netmgrd
 bin/rfs_access
 bin/wcnss_service
 bin/qosmgr
-bin/gsiff_daemon
 bin/adsprpcd
-vendor/lib
 vendor/lib/libadreno_utils.so
 vendor/lib/libmmcamera2_vpe_module.so
 vendor/lib/libTimeService.so
@@ -128,6 +133,7 @@ vendor/lib/libchromatix_imx214_snapshot_w.so
 vendor/lib/libactuator_rohm_bu64243gwz_camcorder.so
 vendor/lib/libmmcamera_sunny_p12v01m_eeprom.so
 vendor/lib/libchromatix_s5k3l1yx_liveshot.so
+vendor/lib/libc2d30-a4xx.so
 vendor/lib/libsrsprocessing.so
 vendor/lib/libqct_resampler.so
 vendor/lib/libactuator_ov8825_camcorder.so
@@ -320,7 +326,6 @@ vendor/lib/libizat_core.so
 vendor/lib/libactuator_rohm_bu64243gwz.so
 vendor/lib/libdsutils.so
 vendor/lib/libchromatix_imx215_hfr_120.so
-vendor/lib/rfsa/adsp
 vendor/lib/rfsa/adsp/libdspCV_skel.so
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
@@ -381,13 +386,13 @@ vendor/lib/libchromatix_skuab_shinetech_gc0339_zsl.so
 vendor/lib/libscve_stub.so
 vendor/lib/libactuator_dw9714_camera.so
 vendor/lib/libchromatix_imx215_snapshot.so
-vendor/lib/egl
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/libmmosal.so
+vendor/lib/libsc-a2xx.so
 vendor/lib/libchromatix_s5k3l1yx_hfr_60fps.so
 vendor/lib/libconfigdb.so
 vendor/lib/libchromatix_SKUAB_ST_s5k4e1_zsl.so
@@ -486,7 +491,6 @@ vendor/lib/libchromatix_imx224_default_video.so
 vendor/lib/libmmcamera_sp1628.so
 vendor/lib/libchromatix_imx135_video_hd.so
 vendor/lib/libchromatix_ov8865_q8v18a_hfr_60fps.so
-vendor/firmware/keymaster
 vendor/firmware/keymaster/keymaster.b01
 vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster/keymaster.b00
@@ -497,3 +501,5 @@ vendor/firmware/bcm2079x-b5_firmware.ncd
 app/shutdownlistener.apk
 app/fastdormancy.apk
 app/TimeService.apk
+../sbin/e2fsck_static
+../sbin/chargeonlymode
