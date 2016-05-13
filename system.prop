@@ -57,6 +57,8 @@ use.voice.path.for.pcm.voip=true
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=true
 persist.audio.fluence.speaker=false
+af.fast_track_multiplier=1
+audio_hal.period_size=192
 
 ro.qualcomm.perf.cores_online=1
 dalvik.vm.dex2oat-swap=false
