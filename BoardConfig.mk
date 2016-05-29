@@ -59,7 +59,7 @@ BOARD_DTBTOOL_ARGS                 := -2
 
 # Vendor Init
 TARGET_UNIFIED_DEVICE       := true
-TARGET_INIT_VENDOR_LIB      := libinit_msm
+TARGET_INIT_VENDOR_LIB      := libinit_cancro
 TARGET_LIBINIT_DEFINES_FILE := $(CANCRO_PATH)/init/init_cancro.cpp
 
 # QCOM hardware

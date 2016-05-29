@@ -36,7 +36,9 @@
 #include "log.h"
 #include "util.h"
 
-#include "init_msm.h"
+#include "init_msm8974.h"
+
+#define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
 #define RAW_ID_PATH     "/sys/devices/system/soc/soc0/raw_id"
 #define BUF_SIZE         64
@@ -65,14 +67,39 @@ static int read_file2(const char *fname, char *data, int max_size)
     return 1;
 }
 
-void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
+void init_alarm_boot_properties()
+{
+    char const *alarm_file = "/proc/sys/kernel/boot_reason";
+    char buf[BUF_SIZE];
+    if(read_file2(alarm_file, buf, sizeof(buf))) {
+
+    /*
+     * Setup ro.alarm_boot value to true when it is RTC triggered boot up
+     * For existing PMIC chips, the following mapping applies
+     * for the value of boot_reason:
+     *
+     * 0 -> unknown
+     * 1 -> hard reset
+     * 2 -> sudden momentary power loss (SMPL)
+     * 3 -> real time clock (RTC)
+     * 4 -> DC charger inserted
+     * 5 -> USB charger insertd
+     * 6 -> PON1 pin toggled (for secondary PMICs)
+     * 7 -> CBLPWR_N pin toggled (for external power supply)
+     * 8 -> KPDPWR_N pin toggled (power key pressed)
+     */
+        if(buf[0] == '3')
+            property_set("ro.alarm_boot", "true");
+        else
+            property_set("ro.alarm_boot", "false");
+    }
+}
+
+
+void vendor_load_properties()
 {
     int rc;
     unsigned long raw_id = -1;
-
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
 
     /* get raw ID */
     rc = read_file2(RAW_ID_PATH, tmp, sizeof(tmp));
