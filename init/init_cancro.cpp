@@ -36,8 +36,6 @@
 #include "log.h"
 #include "util.h"
 
-#include "init_msm8974.h"
-
 #define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
 #define RAW_ID_PATH     "/sys/devices/system/soc/soc0/raw_id"
@@ -123,4 +121,6 @@ void vendor_load_properties()
             property_set("ro.product.model", "Unsupported MI Cancro");
             break;
     }
+
+    init_alarm_boot_properties();
 }
