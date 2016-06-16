@@ -134,10 +134,6 @@ on boot
     # For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
-    # For setting tcp delayed ack
-    chown system system /sys/kernel/ipv4/tcp_delack_seg
-    chown system system /sys/kernel/ipv4/tcp_use_userconfig
-
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
@@ -150,14 +146,6 @@ on boot
     setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
     setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
-
-# Define TCP delayed ack settings for WiFi & LTE
-    setprop net.tcp.delack.default     1
-    setprop net.tcp.delack.wifi        20
-    setprop net.tcp.delack.lte         8
-    setprop net.tcp.usercfg.default    0
-    setprop net.tcp.usercfg.wifi       1
-    setprop net.tcp.usercfg.lte        1
 
 # MDP idle notifier
     chown system graphics /sys/class/graphics/fb0/idle_time
@@ -244,9 +232,6 @@ on boot
     # Vibrator permissions
     chown system system /sys/vibrator/pwmvalue
     chmod 0644 /sys/vibrator/pwmvalue
-
-    chown system system /sys/devices/virtual/graphics/fb0/rgb
-    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
     #charger
     chown root system /sys/module/qpnp_charger/parameters/charger_monitor

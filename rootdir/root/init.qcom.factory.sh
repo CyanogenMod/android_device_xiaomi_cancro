@@ -157,24 +157,6 @@
     chmod -h 0660 /sys/power/wake_lock
     chmod -h 0660 /sys/power/wake_unlock
 
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-    chmod -h 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
-    chmod -h 0660 /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    chmod -h 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-    chmod -h 0660 /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
-    chmod -h 0660 /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/boost
-    chmod -h 0660 /sys/devices/system/cpu/cpufreq/interactive/boost
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/boostpulse
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/input_boost
-    chmod -h 0660 /sys/devices/system/cpu/cpufreq/interactive/input_boost
-    chown -h system.system /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
-    chmod -h 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
-
     # Assume SMP uses shared cpufreq policy for all CPUs
     chown -h system.system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod -h 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
