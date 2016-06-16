@@ -54,11 +54,12 @@ on boot
     write /sys/devices/system/cpu/cpu3/online 1
 
     # msm_thermal
-    write /sys/kernel/msm_thermal/low_thresh "1574400 45 43"
-    write /sys/kernel/msm_thermal/mid_thresh "1267200 50 47"
-    write /sys/kernel/msm_thermal/high_thresh "1190400 55 53"
-    write /sys/kernel/msm_thermal/sampling_ms 10000
+    write /sys/kernel/msm_thermal/zone0 "1728000 45 43"
+    write /sys/kernel/msm_thermal/zone1 "1574400 50 47"
+    write /sys/kernel/msm_thermal/zone2 "1267200 55 53"
     write /sys/kernel/msm_thermal/enabled 1
+
+    # msm_thermal (for power HAL usage)
     chown system system /sys/kernel/msm_thermal/user_maxfreq
     chmod 0660 /sys/kernel/msm_thermal/user_maxfreq
 
@@ -245,6 +246,19 @@ on boot
     chmod 0664 /sys/class/power_supply/battery/input_current_settled
     chmod 0664 /sys/class/power_supply/battery/voltage_min
     chmod 0664 /sys/module/qpnp_charger/parameters/charger_monitor
+
+on enable-low-power
+    write /sys/kernel/msm_thermal/enabled 0
+    write /sys/kernel/msm_thermal/zone0 "1728000 39 38"
+    write /sys/kernel/msm_thermal/zone1 "1574400 42 40"
+    write /sys/kernel/msm_thermal/zone2 "1497600 45 43"
+    write /sys/kernel/msm_thermal/zone3 "1267200 49 46"
+    write /sys/kernel/msm_thermal/zone4 "1190400 53 50"
+    write /sys/kernel/msm_thermal/zone5 "1036800 56 54"
+    write /sys/kernel/msm_thermal/zone6 "960000 62 60"
+    write /sys/kernel/msm_thermal/zone7 "729600 79 75"
+    write /sys/kernel/msm_thermal/sampling_ms 8000
+    write /sys/kernel/msm_thermal/enabled 1
 
 # msm specific files that need to be created on /data
 on post-fs-data
