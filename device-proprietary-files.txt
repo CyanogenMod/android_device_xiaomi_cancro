@@ -1,6 +1,5 @@
 etc/sdm_200_HOG3x3_Grid3x3_bin5_noproj_zero_reduced.bin.pca
 etc/android_model_faceg.dat
-etc/permissions/android.hardware.consumerir.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/qcnvitems.xml
 etc/android_model_facea.dat

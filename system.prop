@@ -4,7 +4,6 @@ rild.libargs=-d /dev/smd0
 
 mmp.enable.3g2=true
 mm.enable.smoothstreaming=true
-mm.enable.qcom_parser=37491
 
 ro.ril.enable.amr.wideband=1
 ro.telephony.default_network=9
