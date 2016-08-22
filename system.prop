@@ -75,3 +75,4 @@ persist.camera.cpp.duplication=false
 camera2.portability.force_api=1
 
 ro.frp.pst=/dev/block/bootdevice/by-name/config
+ro.sdcardfs.enable=true
