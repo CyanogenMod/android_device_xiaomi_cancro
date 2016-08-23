@@ -22,6 +22,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(CANCRO_PATH)/releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cancro
 
 TARGET_BOARD_INFO_FILE ?= $(CANCRO_PATH)/board-info.txt
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 TARGET_NO_BOOTLOADER         := true
@@ -30,8 +31,6 @@ TARGET_NO_RADIOIMAGE         := true
 # Platform
 TARGET_BOARD_PLATFORM     := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
-
-USE_CLANG_PLATFORM_BUILD := true
 
 # Architecture
 TARGET_ARCH         := arm
