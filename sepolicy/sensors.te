@@ -1,6 +1,10 @@
 #============= sensors ==============
+allow sensors device:dir read;
+allow sensors device:file open;
 allow sensors init:unix_stream_socket connectto;
 allow sensors persist_file:file { read write getattr open setattr };
+allow sensors persist_misc_file:dir { getattr open read search };
+allow sensors persist_misc_file:file { getattr open read setattr write };
 allow sensors property_socket:sock_file write;
 allow sensors system_data_file:file open;
 allow sensors system_prop:property_service set;

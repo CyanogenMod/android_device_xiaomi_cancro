@@ -1,4 +1,6 @@
 /data/cam_socket.*                                           u:object_r:camera_socket:s0
+/data/system/sensors                                         u:object_r:device:s0
+/data/system/sensors/settings                                u:object_r:device:s0
 /dev/bcm2079x                                                u:object_r:nfc_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/persist              u:object_r:persist_block_device:s0
 

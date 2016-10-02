@@ -1,0 +1,2 @@
+#============= device ==============
+allow device labeledfs:filesystem associate;

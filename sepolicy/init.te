@@ -1,16 +1,6 @@
 #============= init ==============
-allow init chargeonlymode:file execute_no_trans;
-allow init chargeonlymode:process { siginh transition rlimitinh };
 allow init device:chr_file { create unlink };
 allow init firmware_file:dir mounton;
-allow init graphics_device:chr_file { write ioctl };
-allow init gsiff_daemon:process { siginh rlimitinh };
-allow init input_device:chr_file ioctl;
-allow init location_data_file:fifo_file write;
-allow init qmuxd_socket:sock_file write;
-allow init qmuxd:unix_stream_socket connectto;
-allow init self:netlink_kobject_uevent_socket { read bind create setopt };
-allow init self:socket { write read create ioctl };
 allow init sensors_device:chr_file getattr;
 allow init sensors_socket:sock_file write;
 allow init sensors:unix_stream_socket connectto;
