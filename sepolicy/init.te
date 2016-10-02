@@ -1,6 +1,4 @@
 #============= init ==============
-allow init chargeonlymode:file execute_no_trans;
-allow init chargeonlymode:process { siginh transition rlimitinh };
 allow init device:chr_file { create unlink };
 allow init firmware_file:dir mounton;
 allow init graphics_device:chr_file { write ioctl };

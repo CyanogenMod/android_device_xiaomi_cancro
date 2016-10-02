@@ -1,0 +1,3 @@
+#============= cameraserver ==============
+allow cameraserver system_data_file:sock_file write;
+allow cameraserver system_file:file execmod;
