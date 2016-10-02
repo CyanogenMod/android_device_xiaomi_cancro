@@ -157,9 +157,6 @@ TARGET_PROVIDES_GPS_LOC_API := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Use HW crypto for ODE
-TARGET_HW_DISK_ENCRYPTION := false
-
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
