@@ -101,11 +101,6 @@ vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster/keymaster.mdt
 vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/egl/eglsubAndroid.so
-vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/hw/flp.default.so
 vendor/lib/hw/sensors.msm8974.so
 vendor/lib/lib-dplmedia.so
@@ -147,7 +142,6 @@ vendor/lib/libactuator_rohm_bu64243gwz.so
 vendor/lib/libactuator_rohm_bu64243gwz_camcorder.so
 vendor/lib/libactuator_rohm_bu64243gwz_camera.so
 vendor/lib/libadiertac.so
-vendor/lib/libadreno_utils.so
 vendor/lib/libadsprpc.so
 vendor/lib/libAKM8963.so
 vendor/lib/libarcsoft_beauty_shot.so
@@ -156,12 +150,8 @@ vendor/lib/libasn1crt.so
 vendor/lib/libasn1crtx.so
 vendor/lib/libaudcal.so
 vendor/lib/libaudioalsa.so
-vendor/lib/libbccQTI.so
 vendor/lib/libbtnv.so
-vendor/lib/libC2D2.so
-vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30-a4xx.so
-vendor/lib/libCB.so
 vendor/lib/libchromaflash.so
 vendor/lib/libchromatix_imx132_common.so
 vendor/lib/libchromatix_imx132_default_video.so
@@ -355,7 +345,6 @@ vendor/lib/libFaceProc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libgeofence.so
-vendor/lib/libgsl.so
 vendor/lib/libHevcSwDecoder.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libidl.so
@@ -363,7 +352,6 @@ vendor/lib/libizat_core.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/liblbs_core.so
-vendor/lib/libllvm-qcom.so
 vendor/lib/liblocationservice.so
 vendor/lib/libmm-abl-oem.so
 vendor/lib/libmm-abl.so
@@ -434,7 +422,6 @@ vendor/lib/libnetmgr.so
 vendor/lib/libNimsWrap.so
 vendor/lib/liboemcamera.so
 vendor/lib/liboemcrypto.so
-vendor/lib/libOpenCL.so
 vendor/lib/liboptizoom.so
 vendor/lib/libperipheral_client.so
 vendor/lib/libqcci_legacy.so
@@ -457,12 +444,7 @@ vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/librpmb.so
-vendor/lib/librs_adreno.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a2xx.so
-vendor/lib/libsc-a3xx.so
-vendor/lib/libscale.so
 vendor/lib/libscve.so
 vendor/lib/libscve_stub.so
 vendor/lib/libsensor1.so

@@ -187,3 +187,4 @@ BOARD_SEPOLICY_DIRS += \
         $(CANCRO_PATH)/sepolicy
 
 -include vendor/xiaomi/cancro/BoardConfigVendor.mk
+-include vendor/qcom/binaries/msm8974/graphics/BoardConfigVendor.mk
