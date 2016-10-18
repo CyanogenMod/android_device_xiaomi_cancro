@@ -1,4 +1,3 @@
-../sbin/chargeonlymode
 ../sbin/e2fsck_static
 app/shutdownlistener/shutdownlistener.apk
 app/TimeService/TimeService.apk
