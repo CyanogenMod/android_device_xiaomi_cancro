@@ -36,12 +36,6 @@ def AddBasebandAssertion(info):
             info.script.AppendExtra(cmd)
     return
 
-
-def FullOTA_PostValidate(info):
-    info.script.AppendExtra('run_program("/sbin/e2fsck", "-fy", "/dev/block/platform/msm_sdcc.1/by-name/system");');
-    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "/dev/block/platform/msm_sdcc.1/by-name/system");');
-    info.script.AppendExtra('run_program("/sbin/e2fsck", "-fy", "/dev/block/platform/msm_sdcc.1/by-name/system");');
-
 def FullOTA_InstallEnd(info):
     info.script.Mount("/system");
     info.script.AppendExtra('assert(run_program("/tmp/install/bin/device_check.sh") == 0);');
