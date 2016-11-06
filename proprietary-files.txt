@@ -500,5 +500,4 @@ vendor/firmware/bcm2079x-b5_firmware.ncd
 app/shutdownlistener.apk
 app/fastdormancy.apk
 app/TimeService.apk
-../sbin/e2fsck_static
 ../sbin/chargeonlymode
