@@ -33,6 +33,7 @@ on early-init
     write /sys/block/mmcblk0/queue/scheduler "noop"
 
 on init
+   export LD_SHIM_LIBS /system/vendor/lib/libwvm.so|libshims_wvm.so
     mkdir /persist 0771 system system
     mkdir /firmware 0771 system system
     symlink /sdcard /storage/sdcard0

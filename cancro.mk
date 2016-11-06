@@ -43,6 +43,10 @@ PRODUCT_PACKAGES += \
     libxml2 \
     Snap
 
+# DRM
+PRODUCT_PACKAGES += \
+    libshims_wvm
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
