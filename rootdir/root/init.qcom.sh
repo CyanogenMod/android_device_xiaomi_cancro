@@ -40,6 +40,7 @@ start_sensors()
     if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
         mkdir -p /data/system/sensors
         chown -h system.system /data/system/sensors
+        restorecon -r /data/system/sensors
         touch /data/system/sensors/settings
         chmod -h 775 /data/system/sensors
         chmod -h 664 /data/system/sensors/settings

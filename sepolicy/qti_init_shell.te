@@ -1,9 +1,10 @@
 #============= qti_init_shell ==============
-allow qti_init_shell device:dir { setattr write add_name };
+allow qti_init_shell device:dir { setattr write add_name relabelto };
 allow qti_init_shell device:file { create setattr getattr open write read };
 allow qti_init_shell persist_misc_file:dir { getattr search setattr };
 allow qti_init_shell sensors_data_file:dir setattr;
 allow qti_init_shell sensors_data_file:file { getattr setattr write };
+allow qti_init_shell system_data_file:dir relabelfrom;
 allow qti_init_shell sysfs_battery_supply:dir search;
 allow qti_init_shell sysfs_battery_supply:file { getattr setattr };
 allow qti_init_shell sysfs_devices_system_cpu:file setattr;
