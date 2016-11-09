@@ -241,6 +241,8 @@ on enable-low-power
 
 # msm specific files that need to be created on /data
 on post-fs-data
+    restorecon /data/.layout_version
+
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
