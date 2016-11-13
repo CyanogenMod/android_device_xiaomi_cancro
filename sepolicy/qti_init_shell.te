@@ -1,4 +1,5 @@
 #============= qti_init_shell ==============
+allow qti_init_shell ctl_default_prop:property_service set;
 allow qti_init_shell device:dir { setattr write add_name relabelto };
 allow qti_init_shell device:file { create setattr getattr open write read };
 allow qti_init_shell persist_misc_file:dir { getattr search setattr };
