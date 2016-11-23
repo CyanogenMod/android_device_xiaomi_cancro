@@ -18,7 +18,7 @@
 
 RAW_ID=`cat /sys/devices/system/soc/soc0/raw_id`
 
-if [ $RAW_ID == 1974 ]; then
+if [ $RAW_ID == 1974 ] || [ $RAW_ID == 1972 ]; then
     # Remove NFC
     rm -rf /system/app/NfcNci
     rm -rf /system/priv-app/Tag
@@ -40,4 +40,12 @@ else
     rm -f /system/etc/mixer_paths_4.xml
     # Remove Mi4 libdirac config
     rm -f /system/vendor/etc/diracmobile_4.config
+fi
+
+if [ $RAW_ID == 1978 ] || [ $RAW_ID == 1974 ]; then
+    # Supported device (Mi3w - 1978 or Mi4 - 1974)
+    return 0
+else
+    # Unsupported device
+    return 1
 fi
