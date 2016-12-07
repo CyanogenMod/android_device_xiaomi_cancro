@@ -114,6 +114,7 @@ void vendor_load_properties()
     switch (raw_id) {
         case 1978:
             property_set("ro.product.model", "MI 3W");
+            property_set("ro.nfc.port", "I2C");
             break;
         case 1974:
             property_set("ro.product.model", "MI 4");
