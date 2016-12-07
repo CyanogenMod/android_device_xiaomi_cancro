@@ -38,7 +38,7 @@ on init
     setprop persist.sys.wfd.virtual 0
     # set logd.radio buffer size
     setprop persist.logd.size.radio "4M"
-    setprop persist.logd.prunelist "1000 1013"
+    setprop persist.logd.prunelist "1013"
 
 on fs
     mount_all fstab.qcom
@@ -136,6 +136,11 @@ on boot
     chown system system /sys/bus/i2c/devices/2-004b/hover_from_flash
     chown system system /sys/devices/fda0c000.qcom,cci/1c.qcom,actuator/bu63163
     exec /system/bin/sh /system/bin/atmel_hover_tune.sh
+    # update foreground cpuset now that processors are up
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/system-background/cpus 0-1
 
 # Dynamically modify golden_ref setting
 on property:persist.atmel.golden.enable=1
