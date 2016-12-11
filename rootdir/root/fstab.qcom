@@ -9,6 +9,5 @@
 /dev/block/platform/msm_sdcc.1/by-name/boot         /boot           emmc    defaults                                                                  defaults
 /dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery       emmc    defaults                                                                  defaults
 /dev/block/platform/msm_sdcc.1/by-name/misc         /misc           emmc    defaults                                                                  defaults
-/dev/block/bootdevice/by-name/config                /frp            emmc    defaults                                                                  defaults
 
 /devices/platform/xhci-hcd/usb1*                    auto            auto    defaults                                                                 voldmanaged=usb:auto
